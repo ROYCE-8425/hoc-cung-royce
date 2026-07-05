@@ -434,7 +434,7 @@ export function TermsPage() {
                         className="bg-white/10 hover:bg-white/20 text-white border-white/30 font-semibold"
                         asChild
                       >
-                        <a href="mailto:legal@studyield.com">legal@studyield.com</a>
+                        <a href="mailto:trannhuy8425@gmail.com">trannhuy8425@gmail.com</a>
                       </Button>
                     </div>
                   </div>

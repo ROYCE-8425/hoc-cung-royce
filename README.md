@@ -1,8 +1,8 @@
 <p align="center">
-  <a href="https://studyield.com">
-    <img src="frontend/public/logos/studyield-logo.png" alt="Studyield" width="80">
+  <a href="https://trannhuy.online">
+    <img src="frontend/public/logos/hoc-cung-royce-logo.png" alt="Học cùng Royce" width="80">
   </a>
-  <h1 align="center">Studyield</h1>
+  <h1 align="center">Học cùng Royce</h1>
   <p align="center">
     <strong>Open-source AI-powered learning platform</strong>
   </p>
@@ -12,17 +12,17 @@
 </p>
 
 <p align="center">
-  <a href="https://studyield.com"><img src="https://img.shields.io/badge/live-studyield.com-brightgreen?logo=vercel&logoColor=white" alt="Live Site"></a>
-  <a href="https://github.com/studyield/studyield/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-blue.svg" alt="License"></a>
-  <a href="https://github.com/studyield/studyield/stargazers"><img src="https://img.shields.io/github/stars/studyield/studyield?style=social" alt="GitHub Stars"></a>
-  <a href="https://github.com/studyield/studyield/issues"><img src="https://img.shields.io/github/issues/studyield/studyield" alt="Issues"></a>
-  <a href="https://github.com/studyield/studyield/pulls"><img src="https://img.shields.io/github/issues-pr/studyield/studyield" alt="Pull Requests"></a>
+  <a href="https://trannhuy.online"><img src="https://img.shields.io/badge/live-trannhuy.online-brightgreen?logo=vercel&logoColor=white" alt="Live Site"></a>
+  <a href="https://github.com/ROYCE-8425/quiz_study/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg" alt="License"></a>
+  <a href="https://github.com/ROYCE-8425/quiz_study/stargazers"><img src="https://img.shields.io/github/stars/ROYCE-8425/quiz_study?style=social" alt="GitHub Stars"></a>
+  <a href="https://github.com/ROYCE-8425/quiz_study/issues"><img src="https://img.shields.io/github/issues/ROYCE-8425/quiz_study" alt="Issues"></a>
+  <a href="https://github.com/ROYCE-8425/quiz_study/pulls"><img src="https://img.shields.io/github/issues-pr/ROYCE-8425/quiz_study" alt="Pull Requests"></a>
 </p>
 
 <p align="center">
-  <a href="https://docs.studyield.com">Documentation</a> |
+  <a href="https://github.com/ROYCE-8425/quiz_study/blob/main/docs/development/build-from-source.md">Documentation</a> |
   <a href="#quick-start">Quick Start</a> |
-  <a href="https://github.com/studyield/studyield/discussions">Discussions</a> |
+  <a href="https://github.com/ROYCE-8425/quiz_study/discussions">Discussions</a> |
   <a href="CONTRIBUTING.md">Contributing</a>
 </p>
 
@@ -43,16 +43,24 @@
 
 ---
 
-## What is Studyield?
+## 🍴 Upstream & Fork Attribution
 
-Studyield is an **open-source AI-powered learning platform** that helps students study more effectively through personalized content, intelligent tutoring, and adaptive assessments. Built for students, educators, and lifelong learners, Studyield combines cutting-edge AI technology with proven learning science.
+**Học cùng Royce** (`ROYCE-8425/quiz_study`) is an independent fork of the excellent open-source project **Studyield** (`studyield/studyield` at https://github.com/studyield/studyield), originally developed by the Studyield Contributors.
 
-Unlike traditional learning platforms that focus solely on content delivery or AI tutoring tools that lack comprehensive study features, Studyield gives you a complete learning ecosystem with 6 killer AI features, a full study toolkit, and multi-platform access.
+We express our sincere gratitude to the original authors and the Studyield community for their foundational work, which we have adopted and extended for academic, research, and collaborative purposes under the GNU Affero General Public License v3 (AGPL-3.0-only).
+
+---
+
+## What is Học cùng Royce?
+
+Học cùng Royce is an **open-source AI-powered learning platform** that helps students study more effectively through personalized content, intelligent tutoring, and adaptive assessments. Built for students, educators, and lifelong learners, Học cùng Royce combines cutting-edge AI technology with proven learning science.
+
+Unlike traditional learning platforms that focus solely on content delivery or AI tutoring tools that lack comprehensive study features, Học cùng Royce gives you a complete learning ecosystem with 6 killer AI features, a full study toolkit, and multi-platform access.
 
 <p align="center">
-  <img src=".github/screenshots/dashboard-home.png" alt="Studyield Dashboard" width="800">
+  <img src=".github/screenshots/dashboard-home.png" alt="Học cùng Royce Dashboard" width="800">
   <br>
-  <em>Studyield's AI-powered learning dashboard</em>
+  <em>Học cùng Royce's AI-powered learning dashboard</em>
 </p>
 
 ### How It Works
@@ -80,7 +88,7 @@ Unlike traditional learning platforms that focus solely on content delivery or A
 - **🌍 12 Languages** -- Full i18n support (EN, JA, ZH, KO, ES, FR, DE, PT, AR, BN, HI, RU)
 
 <p align="center">
-  <img src=".github/screenshots/ai-chat.png" alt="Studyield AI Chat" width="800">
+  <img src=".github/screenshots/ai-chat.png" alt="Học cùng Royce AI Chat" width="800">
   <br>
   <em>AI Chat -- ask questions grounded in your uploaded study materials, with cited answers from your documents</em>
 </p>
@@ -101,7 +109,7 @@ Students today are drowning in information but starving for effective learning t
 - ❌ **Privacy Concerns** -- Uploading study materials to closed-source platforms
 - ❌ **High Costs** -- Premium AI learning tools cost $20-50/month per student
 
-### Studyield's Solution
+### Học cùng Royce's Solution
 
 ✅ **Exam-Style Practice** -- Clone your actual exams to generate perfectly-matched practice questions
 
@@ -117,9 +125,9 @@ Students today are drowning in information but starving for effective learning t
 
 ✅ **Free to Start** -- Open-source with Docker deployment, optional hosted version with fair pricing
 
-## Why Studyield? (Comparison)
+## Why Học cùng Royce? (Comparison)
 
-| Feature | Studyield | Quizlet | Anki | ChatGPT | Khan Academy |
+| Feature | Học cùng Royce | Quizlet | Anki | ChatGPT | Khan Academy |
 |---------|-----------|---------|------|---------|--------------|
 | **Exam Clone** | ✅ AI-generated | ❌ | ❌ | ❌ | ❌ |
 | **Multi-Agent Problem Solver** | ✅ 3 agents + streaming | ❌ | ❌ | ✅ Single agent | ❌ |
@@ -137,12 +145,12 @@ Students today are drowning in information but starving for effective learning t
 | **Learning Curve** | 🟢 Low | 🟢 Low | 🟡 Medium | 🟢 Low | 🟢 Low |
 
 <p align="center">
-  <img src=".github/screenshots/problem-solver.png" alt="Studyield Multi-Agent Problem Solver" width="800">
+  <img src=".github/screenshots/problem-solver.png" alt="Học cùng Royce Multi-Agent Problem Solver" width="800">
   <br>
   <em>Multi-Agent Problem Solver -- Analysis, Solver, and Verifier agents collaborate in real time to break down and verify complex problems</em>
 </p>
 
-### What Makes Studyield Unique?
+### What Makes Học cùng Royce Unique?
 
 1. **Complete AI Learning Ecosystem** -- 6 advanced AI features (exam clone, multi-agent solving, knowledge graphs, teach-back, research, code sandbox) integrated with traditional study tools (flashcards, quizzes, notes)
 2. **Multi-Agent Architecture** -- First open-source learning platform with collaborative AI agents for problem-solving and verification
@@ -152,43 +160,43 @@ Students today are drowning in information but starving for effective learning t
 
 ## 📊 Project Activity & Statistics
 
-Studyield is an **actively maintained** project with a growing community. Here's what's happening:
+Học cùng Royce is an **actively maintained** project with a community. Here's what's happening:
 
 ### GitHub Activity
 
 <p align="left">
-  <img src="https://img.shields.io/github/stars/studyield/studyield?style=for-the-badge&logo=github&color=yellow" alt="GitHub Stars">
-  <img src="https://img.shields.io/github/forks/studyield/studyield?style=for-the-badge&logo=github&color=blue" alt="Forks">
-  <img src="https://img.shields.io/github/contributors/studyield/studyield?style=for-the-badge&logo=github&color=green" alt="Contributors">
-  <img src="https://img.shields.io/github/last-commit/studyield/studyield?style=for-the-badge&logo=github&color=orange" alt="Last Commit">
+  <img src="https://img.shields.io/github/stars/ROYCE-8425/quiz_study?style=for-the-badge&logo=github&color=yellow" alt="GitHub Stars">
+  <img src="https://img.shields.io/github/forks/ROYCE-8425/quiz_study?style=for-the-badge&logo=github&color=blue" alt="Forks">
+  <img src="https://img.shields.io/github/contributors/ROYCE-8425/quiz_study?style=for-the-badge&logo=github&color=green" alt="Contributors">
+  <img src="https://img.shields.io/github/last-commit/ROYCE-8425/quiz_study?style=for-the-badge&logo=github&color=orange" alt="Last Commit">
 </p>
 
 <p align="left">
-  <img src="https://img.shields.io/github/issues/studyield/studyield?style=for-the-badge&logo=github&color=red" alt="Open Issues">
-  <img src="https://img.shields.io/github/issues-pr/studyield/studyield?style=for-the-badge&logo=github&color=purple" alt="Open PRs">
-  <img src="https://img.shields.io/github/issues-closed/studyield/studyield?style=for-the-badge&logo=github&color=green" alt="Closed Issues">
-  <img src="https://img.shields.io/github/issues-pr-closed/studyield/studyield?style=for-the-badge&logo=github&color=blue" alt="Closed PRs">
+  <img src="https://img.shields.io/github/issues/ROYCE-8425/quiz_study?style=for-the-badge&logo=github&color=red" alt="Open Issues">
+  <img src="https://img.shields.io/github/issues-pr/ROYCE-8425/quiz_study?style=for-the-badge&logo=github&color=purple" alt="Open PRs">
+  <img src="https://img.shields.io/github/issues-closed/ROYCE-8425/quiz_study?style=for-the-badge&logo=github&color=green" alt="Closed Issues">
+  <img src="https://img.shields.io/github/issues-pr-closed/ROYCE-8425/quiz_study?style=for-the-badge&logo=github&color=blue" alt="Closed PRs">
 </p>
 
 ### Community Metrics
 
 | Metric | Status | Details |
 |--------|--------|---------|
-| **Total Contributors** | ![Contributors](https://img.shields.io/github/contributors/studyield/studyield?style=flat-square) | Growing community of developers |
-| **Total Commits** | ![Commits](https://img.shields.io/github/commit-activity/t/studyield/studyield?style=flat-square) | Active development since 2024 |
-| **Monthly Commits** | ![Commit Activity](https://img.shields.io/github/commit-activity/m/studyield/studyield?style=flat-square) | Regular updates and improvements |
-| **Average PR Review Time** | 24-48 hours | Fast feedback from maintainers |
+| **Total Contributors** | ![Contributors](https://img.shields.io/github/contributors/ROYCE-8425/quiz_study?style=flat-square) | Maintainer and contributor activity |
+| **Total Commits** | ![Commits](https://img.shields.io/github/commit-activity/t/ROYCE-8425/quiz_study?style=flat-square) | Active development since 2024 |
+| **Monthly Commits** | ![Commit Activity](https://img.shields.io/github/commit-activity/m/ROYCE-8425/quiz_study?style=flat-square) | Regular updates and improvements |
+| **Average PR Review Time** | Maintainer availability | Feedback is handled as project capacity allows |
 | **Code Quality** | ![Code Quality](https://img.shields.io/badge/code%20quality-A-brightgreen?style=flat-square) | TypeScript + ESLint + Prettier |
-| **Test Coverage** | ![Coverage](https://img.shields.io/badge/coverage-70%25-green?style=flat-square) | Backend unit + integration tests |
+| **Test Coverage** | ![Coverage](https://img.shields.io/badge/coverage-planned-blue?style=flat-square) | Backend unit + integration tests |
 | **Documentation** | ![Docs](https://img.shields.io/badge/docs-comprehensive-blue?style=flat-square) | Full API docs + developer guides |
 
 ### Language & Code Statistics
 
 <p align="left">
-  <img src="https://img.shields.io/github/languages/top/studyield/studyield?style=for-the-badge&logo=typescript&color=blue" alt="Top Language">
-  <img src="https://img.shields.io/github/languages/count/studyield/studyield?style=for-the-badge&color=purple" alt="Language Count">
-  <img src="https://img.shields.io/github/repo-size/studyield/studyield?style=for-the-badge&color=orange" alt="Repo Size">
-  <img src="https://img.shields.io/github/license/studyield/studyield?style=for-the-badge&color=green" alt="License">
+  <img src="https://img.shields.io/github/languages/top/ROYCE-8425/quiz_study?style=for-the-badge&logo=typescript&color=blue" alt="Top Language">
+  <img src="https://img.shields.io/github/languages/count/ROYCE-8425/quiz_study?style=for-the-badge&color=purple" alt="Language Count">
+  <img src="https://img.shields.io/github/repo-size/ROYCE-8425/quiz_study?style=for-the-badge&color=orange" alt="Repo Size">
+  <img src="https://img.shields.io/github/license/ROYCE-8425/quiz_study?style=for-the-badge&color=green" alt="License">
 </p>
 
 ### Recent Activity Highlights
@@ -203,13 +211,13 @@ Studyield is an **actively maintained** project with a growing community. Here's
 
 **Active Development** -- Regular commits and updates mean bugs get fixed quickly and features are added based on community feedback
 
-**Fast PR Reviews** -- 24-48 hour review time means your contributions won't sit idle waiting for maintainer attention
+**PR Reviews** -- Maintainers review contributions as project capacity allows, with priority for reproducible fixes and clear documentation updates
 
 **High Code Quality** -- TypeScript, ESLint, Prettier, and comprehensive testing ensure a stable, maintainable codebase
 
 **Comprehensive Docs** -- Full API documentation, developer guides, and code comments make onboarding smooth
 
-**Growing Community** -- More contributors means more features, better testing, and diverse perspectives on product direction
+**community** -- More contributors means more features, better testing, and diverse perspectives on product direction
 
 ### Join the Activity!
 
@@ -222,8 +230,8 @@ Want to see your contributions here? Check out our [Quick Contribution Guide](#-
 Run these commands from the project root:
 
 ```bash
-git clone https://github.com/studyield/studyield.git
-cd studyield
+git clone https://github.com/ROYCE-8425/quiz_study.git
+cd quiz_study
 cp backend/.env.example backend/.env
 # Edit backend/.env with your database credentials and OpenRouter API key
 docker compose --env-file .env.docker up -d
@@ -237,8 +245,8 @@ That's it! Access the app at `http://localhost:5189` and the API at `http://loca
 
 ```bash
 # Clone
-git clone https://github.com/studyield/studyield.git
-cd studyield
+git clone https://github.com/ROYCE-8425/quiz_study.git
+cd quiz_study
 
 # Backend
 cd backend
@@ -268,7 +276,7 @@ This starts PostgreSQL, Redis, Qdrant, and ClickHouse via Docker, then launches 
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                       Studyield Platform                        │
+│                       Học cùng Royce Platform                        │
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │  ┌──────────────┐     ┌──────────────┐     ┌──────────────┐     │
@@ -317,9 +325,9 @@ This starts PostgreSQL, Redis, Qdrant, and ClickHouse via Docker, then launches 
 
 Want to add a new language? See the [translation guide](docs/contributing/translations.md).
 
-## 🚀 Why Contribute to Studyield?
+## 🚀 Why Contribute to Học cùng Royce?
 
-Studyield is more than just another open-source project -- it's an opportunity to build the future of AI-powered education and make quality learning accessible to millions of students worldwide.
+Học cùng Royce is more than just another open-source project -- it's an opportunity to build the future of AI-powered education and make quality learning accessible to millions of students worldwide.
 
 ### What You'll Gain
 
@@ -336,7 +344,7 @@ Studyield is more than just another open-source project -- it's an opportunity t
 - Get recognition in our contributor hall of fame
 - Build expertise in **AI-powered education** and **EdTech** -- highly valued skills in 2026
 
-**🤝 Join a Growing Community**
+**🤝 Join a community**
 - Connect with developers from around the world
 - Get code reviews from experienced maintainers
 - Learn best practices in software architecture
@@ -350,7 +358,7 @@ Studyield is more than just another open-source project -- it's an opportunity t
 **⚡ Quick Onboarding**
 - Docker Compose gets you running in **under 5 minutes**
 - Well-documented codebase with clear architecture
-- Friendly maintainers who respond to PRs within **24-48 hours**
+- Friendly maintainers who review PRs as project capacity allows
 - "Good first issue" labels for newcomers
 
 ## 🗺️ Project Roadmap
@@ -364,7 +372,7 @@ This document includes:
 
 ### How to Influence the Roadmap
 
-💡 **Have ideas?** Open a [GitHub Discussion](https://github.com/studyield/studyield/discussions) or contribute to existing threads
+💡 **Have ideas?** Open a [GitHub Discussion](https://github.com/ROYCE-8425/quiz_study/discussions) or contribute to existing threads
 
 🗳️ **Vote on features** -- Star issues you care about to help us prioritize
 
@@ -378,8 +386,8 @@ Get started contributing in **under 5 minutes**:
 
 ```bash
 # Fork the repository on GitHub, then clone your fork
-git clone https://github.com/YOUR_USERNAME/studyield.git
-cd studyield
+git clone https://github.com/YOUR_USERNAME/hoc-cung-royce.git
+cd quiz_study
 
 # Start with Docker (easiest way)
 cp backend/.env.example backend/.env
@@ -390,29 +398,29 @@ docker compose --env-file .env.docker up -d
 # Backend API: http://localhost:3010
 ```
 
-**That's it!** You're running Studyield locally.
+**That's it!** You're running Học cùng Royce locally.
 
 ### Step 2: Find Something to Work On
 
 Choose based on your experience level:
 
 **🟢 Beginner-Friendly**
-- 📝 [Fix typos or improve documentation](https://github.com/studyield/studyield/issues?q=is%3Aissue+is%3Aopen+label%3Adocumentation)
-- 🌍 [Add translations](https://github.com/studyield/studyield/issues?q=is%3Aissue+is%3Aopen+label%3Ai18n) -- We support 12 languages
-- 🐛 [Fix simple bugs](https://github.com/studyield/studyield/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
-- ✨ [Improve UI/UX](https://github.com/studyield/studyield/issues?q=is%3Aissue+is%3Aopen+label%3Aui%2Fux)
+- 📝 [Fix typos or improve documentation](https://github.com/ROYCE-8425/quiz_study/issues?q=is%3Aissue+is%3Aopen+label%3Adocumentation)
+- 🌍 [Add translations](https://github.com/ROYCE-8425/quiz_study/issues?q=is%3Aissue+is%3Aopen+label%3Ai18n) -- We support 12 languages
+- 🐛 [Fix simple bugs](https://github.com/ROYCE-8425/quiz_study/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+- ✨ [Improve UI/UX](https://github.com/ROYCE-8425/quiz_study/issues?q=is%3Aissue+is%3Aopen+label%3Aui%2Fux)
 
 **🟡 Intermediate**
 - 🔌 Add new AI agent tools or capabilities
 - 📊 Improve analytics dashboard and visualizations
-- 🧪 [Write tests](https://github.com/studyield/studyield/issues?q=is%3Aissue+is%3Aopen+label%3Atesting)
-- 🚀 [Performance improvements](https://github.com/studyield/studyield/issues?q=is%3Aissue+is%3Aopen+label%3Aperformance)
+- 🧪 [Write tests](https://github.com/ROYCE-8425/quiz_study/issues?q=is%3Aissue+is%3Aopen+label%3Atesting)
+- 🚀 [Performance improvements](https://github.com/ROYCE-8425/quiz_study/issues?q=is%3Aissue+is%3Aopen+label%3Aperformance)
 
 **🔴 Advanced**
 - 🤖 Build new AI features (multi-modal input, advanced reasoning)
-- ⚙️ [Core engine enhancements](https://github.com/studyield/studyield/issues?q=is%3Aissue+is%3Aopen+label%3Acore)
-- 🏗️ [Architecture improvements](https://github.com/studyield/studyield/issues?q=is%3Aissue+is%3Aopen+label%3Aarchitecture)
-- 🔐 [Security features](https://github.com/studyield/studyield/issues?q=is%3Aissue+is%3Aopen+label%3Asecurity)
+- ⚙️ [Core engine enhancements](https://github.com/ROYCE-8425/quiz_study/issues?q=is%3Aissue+is%3Aopen+label%3Acore)
+- 🏗️ [Architecture improvements](https://github.com/ROYCE-8425/quiz_study/issues?q=is%3Aissue+is%3Aopen+label%3Aarchitecture)
+- 🔐 [Security features](https://github.com/ROYCE-8425/quiz_study/issues?q=is%3Aissue+is%3Aopen+label%3Asecurity)
 
 ### Step 3: Make Your Changes
 
@@ -446,7 +454,7 @@ git push origin feature/your-feature-name
 
 **What happens next?**
 - ✅ Automated tests run on your PR
-- 👀 A maintainer reviews your code (usually within **24-48 hours**)
+- 👀 A maintainer reviews your code when project capacity allows
 - 💬 We may suggest changes or improvements
 - 🎉 Once approved, your code gets merged!
 
@@ -456,7 +464,7 @@ git push origin feature/your-feature-name
 
 📖 **Read the code** -- Browse existing modules and components for reference
 
-❓ **Ask questions** -- Join our [Discussions](https://github.com/studyield/studyield/discussions) if you're stuck
+❓ **Ask questions** -- Join our [Discussions](https://github.com/ROYCE-8425/quiz_study/discussions) if you're stuck
 
 🧪 **Write tests** -- PRs with tests get merged faster
 
@@ -464,41 +472,41 @@ git push origin feature/your-feature-name
 
 ### Need Help?
 
-- 💬 [GitHub Discussions](https://github.com/studyield/studyield/discussions) -- Ask questions, share ideas
+- 💬 [GitHub Discussions](https://github.com/ROYCE-8425/quiz_study/discussions) -- Ask questions, share ideas
 - 💬 [Discord Community](https://discord.gg/9JEk6WSM) -- Join our Discord server
 - 📖 [Contributing Guide](CONTRIBUTING.md) -- Detailed contribution guidelines
-- 🐛 [GitHub Issues](https://github.com/studyield/studyield/issues) -- Report bugs or request features
-- 📧 [Email](mailto:support@studyield.com) -- Direct contact with maintainers
+- 🐛 [GitHub Issues](https://github.com/ROYCE-8425/quiz_study/issues) -- Report bugs or request features
+- 📧 [Email](mailto:trannhuy8425@gmail.com) -- Direct contact with maintainers
 
 ## Contributing
 
 We welcome contributions! See our [Contributing Guide](CONTRIBUTING.md) to get started.
 
 **Ways to contribute:**
-- Report bugs or request features via [GitHub Issues](https://github.com/studyield/studyield/issues)
+- Report bugs or request features via [GitHub Issues](https://github.com/ROYCE-8425/quiz_study/issues)
 - Submit pull requests for bug fixes or new features
 - Improve documentation
 - Add translations (we support 12 languages)
 
 ## Contributors
 
-Thank you to all the amazing people who have contributed to Studyield! 🎉
+Thank you to all the amazing people who have contributed to Học cùng Royce! 🎉
 
-<a href="https://github.com/studyield/studyield/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=studyield/studyield&max=100&columns=10" />
+<a href="https://github.com/ROYCE-8425/quiz_study/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ROYCE-8425/quiz_study&max=100&columns=10" />
 </a>
 
 Want to see your face here? Check out our [Contributing Guide](CONTRIBUTING.md) and start contributing today!
 
 ## 💬 Join Our Community
 
-Connect with developers, get help, and stay updated on Studyield's latest developments!
+Connect with developers, get help, and stay updated on Học cùng Royce's latest developments!
 
 <p align="center">
-  <a href="https://github.com/studyield/studyield/discussions">
+  <a href="https://github.com/ROYCE-8425/quiz_study/discussions">
     <img src="https://img.shields.io/badge/GitHub-Discussions-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Discussions">
   </a>
-  <a href="https://x.com/infoinletcom">
+  <a href="https://github.com/ROYCE-8425">
     <img src="https://img.shields.io/badge/Twitter-Follow%20Us-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white" alt="Twitter">
   </a>
 </p>
@@ -507,11 +515,11 @@ Connect with developers, get help, and stay updated on Studyield's latest develo
 
 | Platform | Purpose | Link |
 |----------|---------|------|
-| 💡 **GitHub Discussions** | Ask questions, share ideas, feature requests | [Start Discussion](https://github.com/studyield/studyield/discussions) |
+| 💡 **GitHub Discussions** | Ask questions, share ideas, feature requests | [Start Discussion](https://github.com/ROYCE-8425/quiz_study/discussions) |
 | 💬 **Discord** | Join our community, real-time chat | [Join Discord](https://discord.gg/9JEk6WSM) |
-| 🐦 **Twitter/X** | Product updates, announcements, tips | [@infoinletcom](https://x.com/infoinletcom) |
-| 📧 **Email** | Direct contact with maintainers | support@studyield.com |
-| 🌐 **Website** | Documentation, guides, blog | [studyield.com](https://studyield.com) |
+| 🐦 **Twitter/X** | Product updates, announcements, tips | [@ROYCE-8425](https://github.com/ROYCE-8425) |
+| 📧 **Email** | Direct contact with maintainers | trannhuy8425@gmail.com |
+| 🌐 **Website** | Documentation, guides, blog | [trannhuy.online](https://trannhuy.online) |
 
 ### Community Guidelines
 
@@ -529,7 +537,7 @@ Please report security vulnerabilities responsibly. See [SECURITY.md](SECURITY.m
 
 This project is licensed under the [GNU Affero General Public License v3.0](LICENSE).
 
-Copyright 2025 Studyield Contributors.
+Copyright 2025 Học cùng Royce Contributors.
 
 ## Acknowledgments
 
@@ -538,22 +546,22 @@ Built with NestJS, React, PostgreSQL, Redis, Qdrant, ClickHouse, OpenRouter, and
 ---
 
 <p align="center">
-  <a href="https://studyield.com">Website</a> |
-  <a href="https://docs.studyield.com">Docs</a> |
-  <a href="https://github.com/studyield/studyield/discussions">Discussions</a> |
-  <a href="https://x.com/infoinletcom">Twitter</a>
+  <a href="https://trannhuy.online">Website</a> |
+  <a href="https://github.com/ROYCE-8425/quiz_study/blob/main/docs/development/build-from-source.md">Docs</a> |
+  <a href="https://github.com/ROYCE-8425/quiz_study/discussions">Discussions</a> |
+  <a href="https://github.com/ROYCE-8425">Twitter</a>
 </p>
 
 ---
 
 <p align="center">
-  <strong>Built with ❤️ by the <a href="https://github.com/studyield">Studyield</a> community</strong>
+  <strong>Built with ❤️ by the <a href="https://github.com/hoc-cung-royce">Học cùng Royce</a> community</strong>
 </p>
 
 <p align="center">
   If you find this project useful, please consider giving it a star! ⭐
   <br><br>
-  <a href="https://github.com/studyield/studyield/stargazers">
-    <img src="https://img.shields.io/github/stars/studyield/studyield?style=social" alt="Star on GitHub">
+  <a href="https://github.com/ROYCE-8425/quiz_study/stargazers">
+    <img src="https://img.shields.io/github/stars/ROYCE-8425/quiz_study?style=social" alt="Star on GitHub">
   </a>
 </p>
