@@ -1,4 +1,4 @@
-# Studyield - Full Stack Setup
+# Học cùng Royce - Full Stack Setup
 # Usage: docker compose --env-file .env.docker up
 # Then visit http://localhost:5189 (frontend) and http://localhost:3010 (backend API)
 
@@ -110,7 +110,7 @@ services:
     ports:
       - "${FRONTEND_PORT:-5189}:80"
     environment:
-      - VITE_API_URL=http://localhost:${BACKEND_PORT:-3010}
+      - VITE_API_URL=http://localhost:${BACKEND_PORT:-3010}/api/v1
     depends_on:
       - backend
 

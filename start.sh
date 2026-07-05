@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Starting Studyield Platform..."
+echo "Starting Học cùng Royce Platform..."
 echo ""
 
 # Colors for output
@@ -115,7 +115,7 @@ fi
 
 echo ""
 echo -e "${GREEN}================================================${NC}"
-echo -e "${GREEN}Starting Studyield Dev Servers...${NC}"
+echo -e "${GREEN}Starting Học cùng Royce Dev Servers...${NC}"
 echo -e "${GREEN}================================================${NC}"
 echo ""
 echo -e "${BLUE}   Backend API:    ${GREEN}http://localhost:3010${NC}"
