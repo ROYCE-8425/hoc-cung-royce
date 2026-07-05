@@ -1,10 +1,10 @@
 {
-  "name": "studyield-backend",
+  "name": "hoc-cung-royce-backend",
   "version": "1.0.0",
-  "description": "Studyield AI Learning Platform Backend",
-  "author": "Studyield Team",
+  "description": "Học cùng Royce AI Learning Platform Backend",
+  "author": "Học cùng Royce Team",
   "private": true,
-  "license": "Apache-2.0",
+  "license": "AGPL-3.0-only",
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

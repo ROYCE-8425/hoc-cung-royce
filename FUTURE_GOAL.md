@@ -1,4 +1,4 @@
-# Studyield Open Source - Developer Briefing
+# Học cùng Royce Open Source - Developer Briefing
 
 > **Date**: April 8, 2026
 > **Status**: Initial open-source release completed, polish work remaining
@@ -9,15 +9,15 @@
 
 | Repo | URL | Visibility | Purpose |
 |------|-----|-----------|---------|
-| **studyield** | https://github.com/studyield/studyield | **Public** | Open-source release, single clean commit |
-| **studyield-private** | https://github.com/studyield/studyield-private | **Private** | Development repo, full git history, all branches |
-| studyield-old | https://github.com/studyield/studyield-old | Private | Archived (original repo before split, can delete) |
+| **hoc-cung-royce** | https://github.com/ROYCE-8425/quiz_study | **Public** | Open-source release, single clean commit |
+| **hoc-cung-royce-private** | https://github.com/ROYCE-8425/quiz_study-private | **Private** | Development repo, full git history, all branches |
+| hoc-cung-royce-old | https://github.com/ROYCE-8425/quiz_study-old | Private | Archived (original repo before split, can delete) |
 
 **Local directories:**
-- `/Users/nymulislam/DEVELOP/studyield` → public repo
-- `/Users/nymulislam/DEVELOP/studyield-private` → private dev repo
+- `/Users/nymulislam/DEVELOP/hoc-cung-royce` → public repo
+- `/Users/nymulislam/DEVELOP/hoc-cung-royce-private` → private dev repo
 
-**Workflow**: Develop on `studyield-private` (feature branches → develop → main), then periodically sync clean code to `studyield` (public).
+**Workflow**: Develop on `hoc-cung-royce-private` (feature branches → develop → main), then periodically sync clean code to `hoc-cung-royce` (public).
 
 ---
 
@@ -51,11 +51,11 @@
 ### 5. Frontend Code Quality Fixes
 - [x] Added **DOMPurify** sanitization for all `dangerouslySetInnerHTML` usage (5 files - XSS prevention)
 - [x] Created `ErrorBoundary` component (`src/components/ErrorBoundary.tsx`)
-- [x] Removed production API URL fallback (`https://api.studyield.com` → `http://localhost:3010`) in `src/config/api.ts`
+- [x] Removed production API URL fallback (`https://api.trannhuy.online` → `http://localhost:3010`) in `src/config/api.ts`
 - [x] Disabled sourcemaps in production build (`vite.config.ts`)
 
 ### 6. Mobile Code Quality Fixes
-- [x] Changed API URL fallback from `https://api.studyield.com` to `http://10.0.2.2:3010` in `api_config.dart`
+- [x] Changed API URL fallback from `https://api.trannhuy.online` to `http://10.0.2.2:3010` in `api_config.dart`
 - [x] Enabled `avoid_print` lint rule in `analysis_options.yaml`
 - [x] Removed all token debug `print()` statements from `auth_token_service.dart` and `token_storage.dart`
 - [x] Pinned `intl` dependency from `any` to `^0.20.0` in `pubspec.yaml`
@@ -244,7 +244,7 @@ server {
 
 #### 4a. Set up Husky + lint-staged
 ```bash
-cd studyield  # public repo root
+cd quiz_study  # public repo root
 npm init -y   # if no root package.json
 npx husky init
 npm install -D husky lint-staged
@@ -296,11 +296,11 @@ None of the 25 backend modules have README files. Each should have a brief doc e
 
 ### PRIORITY 6: Mobile Package Name Change
 
-Current package name `com.infoinlet.studyield` references internal company name. Needs changing to `com.studyield.app` or similar.
+Current package name `com.infoinlet.hoc-cung-royce` references internal company name. Needs changing to `com.hoc-cung-royce.app` or similar.
 
 **Files to update:**
 - `mobile/android/app/build.gradle.kts` (lines 9, 24) - namespace and applicationId
-- `mobile/android/app/src/main/kotlin/com/infoinlet/studyield/MainActivity.kt` - package declaration + rename directory
+- `mobile/android/app/src/main/kotlin/com/infoinlet/hoc-cung-royce/MainActivity.kt` - package declaration + rename directory
 - iOS bundle ID references in Xcode project
 
 **Note**: This also requires updating Firebase project config, Google OAuth redirect URIs, and Apple sign-in service IDs.
@@ -377,8 +377,8 @@ Only 7 out of 160+ component files have `aria-*` attributes. Needs:
 When open-source improvements are ready:
 
 ```bash
-# 1. Work in studyield-private, commit to develop
-cd /Users/nymulislam/DEVELOP/studyield-private
+# 1. Work in hoc-cung-royce-private, commit to develop
+cd /Users/nymulislam/DEVELOP/hoc-cung-royce-private
 git checkout develop
 # ... make changes, commit ...
 
@@ -388,10 +388,10 @@ rsync -av --exclude='.git' --exclude='node_modules' --exclude='dist' \
   --exclude='OPEN_SOURCE_IMPLEMENTATION.md' --exclude='DEVELOPER_BRIEFING.md' \
   --exclude='.github/workflows/deploy.yml' --exclude='mobile/android/app/google-services.json' \
   --exclude='mobile/ios/Runner/GoogleService-Info.plist' \
-  /Users/nymulislam/DEVELOP/studyield-private/ /Users/nymulislam/DEVELOP/studyield/
+  /Users/nymulislam/DEVELOP/hoc-cung-royce-private/ /Users/nymulislam/DEVELOP/hoc-cung-royce/
 
 # 3. Commit and push in public repo
-cd /Users/nymulislam/DEVELOP/studyield
+cd /Users/nymulislam/DEVELOP/hoc-cung-royce
 git add -A
 git commit -m "feat: description of changes"
 git push origin main

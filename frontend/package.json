@@ -1,9 +1,10 @@
 {
-  "name": "studyield-frontend",
+  "name": "hoc-cung-royce-frontend",
   "private": true,
+  "license": "AGPL-3.0-only",
   "version": "1.0.0",
   "type": "module",
-  "description": "Studyield - AI-Powered Learning Platform Frontend",
+  "description": "Học cùng Royce - AI-Powered Learning Platform Frontend",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

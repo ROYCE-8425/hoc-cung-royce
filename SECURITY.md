@@ -8,13 +8,13 @@
 
 ## Reporting a Vulnerability
 
-We take the security of Studyield seriously. If you believe you have found a security vulnerability, please report it to us as described below.
+We take the security of Học cùng Royce seriously. If you believe you have found a security vulnerability, please report it to us as described below.
 
 **Please do NOT report security vulnerabilities through public GitHub issues.**
 
 ### How to Report
 
-Send an email to [security@studyield.com](mailto:security@studyield.com) with the following information:
+Send an email to [trannhuy8425@gmail.com](mailto:trannhuy8425@gmail.com) with the following information:
 
 - Type of issue (e.g., SQL injection, XSS, authentication bypass, etc.)
 - Full paths of source file(s) related to the issue
@@ -44,13 +44,13 @@ We will not pursue legal action against researchers who follow these guidelines.
 
 ## Security Best Practices for Self-Hosting
 
-When deploying Studyield, please ensure:
+When deploying Học cùng Royce, please ensure:
 
 1. **Environment Variables**: Never commit `.env` files. Use the provided `.env.example` as a template.
 2. **JWT Secrets**: Always set strong, unique `JWT_ACCESS_SECRET` and `JWT_REFRESH_SECRET` in production (min 32 characters).
 3. **Database**: Use strong passwords and restrict network access to your PostgreSQL, Redis, Qdrant, and ClickHouse instances.
 4. **HTTPS**: Always use HTTPS in production with valid SSL certificates.
-5. **Updates**: Keep your Studyield installation and dependencies up to date.
+5. **Updates**: Keep your Học cùng Royce installation and dependencies up to date.
 6. **Firebase**: Keep Firebase credentials secure and restrict API key permissions.
 7. **File Uploads**: Configure appropriate file size limits and validate file types.
 8. **CORS**: Restrict `CORS_ORIGINS` to only your frontend domain in production.

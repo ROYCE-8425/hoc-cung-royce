@@ -8,6 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- **Community Public Study Sets**: Section on Dashboard Home showing popular and newest public study sets, complete with search, tabs, engagement metrics (mock views and rating), and direct study links.
+- **Collapsible Study Settings Panel**: A sleek study settings bar on the flashcard study session page grouping controls for Auto Speak, Card Shuffling, Question Language, and Speaker voice selection.
+- **Card Shuffling**: Feature to randomize the order of study cards during practice session.
+- **Flexible Question Language**: Switch to study cards in English (English word on front, Vietnamese translation on back) or Vietnamese (Vietnamese definition on front, English word on back) with accurate pronunciation support.
+- **Promo Code Account Upgrade**: Added a promo code input on the subscription page (entering code `ILOVEENGLISH` upgrades the user to the Pro Plan for 10 years).
+- **Usage Warning Alert**: Clear limit-reached modal when free users exceed study set limits (25 cards limit) guiding them to upgrade.
+
+### Added (Original)
 - Open-source release under Apache License 2.0
 - Comprehensive CONTRIBUTING.md guide
 - SECURITY.md with responsible disclosure policy

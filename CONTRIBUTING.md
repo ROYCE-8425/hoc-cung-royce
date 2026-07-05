@@ -1,6 +1,6 @@
-# Contributing to Studyield
+# Contributing to Học cùng Royce
 
-Thank you for your interest in contributing to Studyield! This guide will help you get started.
+Thank you for your interest in contributing to Học cùng Royce! This guide will help you get started.
 
 ## Code of Conduct
 
@@ -10,7 +10,7 @@ By participating in this project, you agree to abide by our [Code of Conduct](CO
 
 ### Reporting Bugs
 
-Open a [Bug Report](https://github.com/studyield/studyield/issues/new?template=bug_report.yml) with:
+Open a [Bug Report](https://github.com/ROYCE-8425/quiz_study/issues/new?template=bug_report.yml) with:
 - Clear description of the issue
 - Steps to reproduce
 - Expected vs actual behavior
@@ -19,7 +19,7 @@ Open a [Bug Report](https://github.com/studyield/studyield/issues/new?template=b
 
 ### Suggesting Features
 
-Open a [Feature Request](https://github.com/studyield/studyield/issues/new?template=feature_request.yml) with:
+Open a [Feature Request](https://github.com/ROYCE-8425/quiz_study/issues/new?template=feature_request.yml) with:
 - Description of the feature
 - Use case and motivation
 - Suggested implementation approach (optional)
@@ -48,8 +48,8 @@ Open a [Feature Request](https://github.com/studyield/studyield/issues/new?templ
 
 ```bash
 # Clone your fork
-git clone https://github.com/YOUR_USERNAME/studyield.git
-cd studyield
+git clone https://github.com/YOUR_USERNAME/hoc-cung-royce.git
+cd quiz_study
 
 # Start infrastructure services
 docker compose --env-file .env.docker up -d postgres redis qdrant clickhouse
@@ -80,7 +80,7 @@ cp .env.example .env
 ### Project Structure
 
 ```
-studyield/
+hoc-cung-royce/
   backend/                    # NestJS backend API
     src/
       modules/
@@ -127,7 +127,7 @@ studyield/
 
 ## Adding Translations
 
-Studyield supports 12 languages and we welcome translation contributions!
+Học cùng Royce supports 12 languages and we welcome translation contributions!
 
 ### Web (Frontend)
 1. Copy `frontend/src/locales/en.json` to a new file (e.g., `fr.json`)
@@ -169,7 +169,7 @@ npm run typecheck           # Type check
 
 ## Questions?
 
-- Open a [Discussion](https://github.com/studyield/studyield/discussions)
-- Check the [Documentation](https://docs.studyield.com)
+- Open a [Discussion](https://github.com/ROYCE-8425/quiz_study/discussions)
+- Check the [Documentation](https://github.com/ROYCE-8425/quiz_study/blob/main/docs/development/build-from-source.md)
 
 Thank you for contributing!
