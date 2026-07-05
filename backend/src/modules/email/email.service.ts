@@ -85,7 +85,7 @@ export class EmailService {
         bcc,
         from:
           emailOptions.from ||
-          this.configService.get('EMAIL_DEFAULT_FROM', 'noreply@studyield.com'),
+          this.configService.get('EMAIL_DEFAULT_FROM', 'noreply@trannhuy.online'),
         subject: emailOptions.subject,
         status: result.status,
         messageId: result.messageId,
@@ -108,7 +108,7 @@ export class EmailService {
       await this.logEmail({
         userId: options.userId,
         to: Array.isArray(options.to) ? options.to : [options.to],
-        from: options.from || this.configService.get('EMAIL_DEFAULT_FROM', 'noreply@studyield.com'),
+        from: options.from || this.configService.get('EMAIL_DEFAULT_FROM', 'noreply@trannhuy.online'),
         subject: options.subject,
         status: 'failed',
         error: (error as Error).message,
@@ -265,7 +265,7 @@ export class EmailService {
 
   private getVerificationTemplate(verifyUrl: string): EmailTemplate {
     return {
-      subject: 'Verify Your Studyield Account',
+      subject: 'Verify Your Học cùng Royce Account',
       html: `
         <!DOCTYPE html>
         <html>
@@ -283,7 +283,7 @@ export class EmailService {
         <body>
           <div class="container">
             <div class="header">
-              <h1>Welcome to Studyield!</h1>
+              <h1>Welcome to Học cùng Royce!</h1>
             </div>
             <div class="content">
               <p>Thanks for signing up! Please verify your email address to get started.</p>
@@ -300,13 +300,13 @@ export class EmailService {
         </body>
         </html>
       `,
-      text: `Welcome to Studyield!\n\nPlease verify your email by visiting: ${verifyUrl}\n\nThis link expires in 24 hours.\n\nIf you didn't create this account, you can safely ignore this email.`,
+      text: `Welcome to Học cùng Royce!\n\nPlease verify your email by visiting: ${verifyUrl}\n\nThis link expires in 24 hours.\n\nIf you didn't create this account, you can safely ignore this email.`,
     };
   }
 
   private getPasswordResetTemplate(resetUrl: string): EmailTemplate {
     return {
-      subject: 'Reset Your Studyield Password',
+      subject: 'Reset Your Học cùng Royce Password',
       html: `
         <!DOCTYPE html>
         <html>
@@ -347,7 +347,7 @@ export class EmailService {
 
   private getWelcomeTemplate(name: string): EmailTemplate {
     return {
-      subject: "Welcome to Studyield - Let's Start Learning!",
+      subject: "Welcome to Học cùng Royce - Let's Start Learning!",
       html: `
         <!DOCTYPE html>
         <html>
@@ -368,7 +368,7 @@ export class EmailService {
               <h1>Welcome, ${name}!</h1>
             </div>
             <div class="content">
-              <p>We're excited to have you on board. Here's what you can do with Studyield:</p>
+              <p>We're excited to have you on board. Here's what you can do with Học cùng Royce:</p>
               <div class="feature"><strong>AI-Powered Flashcards</strong> - Create smart flashcards with spaced repetition</div>
               <div class="feature"><strong>RAG Chat</strong> - Ask questions about your study materials</div>
               <div class="feature"><strong>Problem Solver</strong> - Get step-by-step solutions to complex problems</div>
@@ -382,7 +382,7 @@ export class EmailService {
         </body>
         </html>
       `,
-      text: `Welcome, ${name}!\n\nWe're excited to have you on board. Here's what you can do with Studyield:\n\n- AI-Powered Flashcards\n- RAG Chat\n- Problem Solver\n- Exam Clone\n- Deep Research\n\nGet started at: ${this.appUrl}`,
+      text: `Welcome, ${name}!\n\nWe're excited to have you on board. Here's what you can do with Học cùng Royce:\n\n- AI-Powered Flashcards\n- RAG Chat\n- Problem Solver\n- Exam Clone\n- Deep Research\n\nGet started at: ${this.appUrl}`,
     };
   }
 
@@ -435,7 +435,7 @@ export class EmailService {
     const timeStr = hours > 0 ? `${hours}h ${minutes}m` : `${minutes} minutes`;
 
     return {
-      subject: 'Your Weekly Studyield Progress Report',
+      subject: 'Your Weekly Học cùng Royce Progress Report',
       html: `
         <!DOCTYPE html>
         <html>

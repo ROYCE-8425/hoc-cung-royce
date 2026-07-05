@@ -57,8 +57,8 @@ async function bootstrap() {
 
   // Swagger Documentation
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('Studyield API')
-    .setDescription('AI-powered learning platform API')
+    .setTitle('Học cùng Royce API')
+    .setDescription('Học cùng Royce AI-powered learning platform API')
     .setVersion('1.0.0')
     .addBearerAuth()
     .addTag('Health', 'Health check endpoints')

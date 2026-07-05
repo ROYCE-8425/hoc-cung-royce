@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Query, UseGuards, BadRequestException } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiBearerAuth } from '@nestjs/swagger';
 import { SubscriptionService } from './subscription.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
@@ -62,5 +62,18 @@ export class SubscriptionController {
     }
 
     return usage;
+  }
+
+  @Post('promo-code')
+  @ApiOperation({ summary: 'Apply promo code to upgrade to PRO' })
+  async applyPromoCode(
+    @CurrentUser() user: JwtPayload,
+    @Body() body: { code: string },
+  ) {
+    if (body.code?.trim().toUpperCase() === 'ILOVEENGLISH') {
+      await this.subscriptionService.upgradeToPro(user.sub);
+      return { success: true, message: 'Chúc mừng! Bạn đã nâng cấp thành công gói PRO (10 năm)!' };
+    }
+    throw new BadRequestException('Mã khuyến mãi không hợp lệ hoặc đã hết hạn.');
   }
 }

@@ -79,10 +79,10 @@ export class AiService implements OnModuleInit {
     if (openRouterKey && !openRouterKey.includes('your-')) {
       this.openRouterClient = new OpenAI({
         apiKey: openRouterKey,
-        baseURL: 'https://openrouter.ai/api/v1',
+        baseURL: this.configService.get<string>('OPENROUTER_BASE_URL', 'https://openrouter.ai/api/v1'),
         defaultHeaders: {
           'HTTP-Referer': this.configService.get<string>('FRONTEND_URL', 'http://localhost:5189'),
-          'X-Title': 'Studyield',
+          'X-Title': 'Học cùng Royce',
         },
         timeout: 120000,
       });
@@ -94,6 +94,7 @@ export class AiService implements OnModuleInit {
     if (openaiKey && !openaiKey.includes('your-')) {
       this.openaiClient = new OpenAI({
         apiKey: openaiKey,
+        baseURL: this.configService.get<string>('OPENAI_BASE_URL', 'https://api.openai.com/v1'),
         timeout: 120000,
       });
       this.logger.log('OpenAI direct client initialized (fallback)');

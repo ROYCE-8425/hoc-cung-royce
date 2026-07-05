@@ -37,8 +37,8 @@ export class EmbeddingService {
       headers: {
         Authorization: `Bearer ${this.apiKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://studyield.com',
-        'X-Title': 'Studyield',
+        'HTTP-Referer': 'https://study.trannhuy.online',
+        'X-Title': 'Học cùng Royce',
       },
       body: JSON.stringify({
         model: this.embeddingModel,
@@ -68,8 +68,8 @@ export class EmbeddingService {
       headers: {
         Authorization: `Bearer ${this.apiKey}`,
         'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://studyield.com',
-        'X-Title': 'Studyield',
+        'HTTP-Referer': 'https://study.trannhuy.online',
+        'X-Title': 'Học cùng Royce',
       },
       body: JSON.stringify({
         model: this.embeddingModel,

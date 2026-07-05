@@ -489,7 +489,7 @@ Now analyze this image and describe what you see:`,
   ): Promise<ChatMessage[]> {
     const messages: ChatMessage[] = [];
 
-    let systemPrompt = `You are a helpful AI learning assistant for Studyield, an AI-powered study platform.
+    let systemPrompt = `You are a helpful AI learning assistant for Học cùng Royce, an AI-powered study platform.
 Your goal is to help students learn and understand their study materials.
 Be concise, accurate, and educational in your responses.
 When explaining concepts, use clear examples and break down complex ideas.`;

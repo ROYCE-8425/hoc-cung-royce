@@ -33,7 +33,7 @@ export interface UsageRecord {
 }
 
 const PLAN_LIMITS = {
-  free: { ai_requests: 10, study_sets: 3, flashcards: 50, storage_bytes: 50 * 1024 * 1024 },
+  free: { ai_requests: 10, study_sets: 3, flashcards: 25, storage_bytes: 50 * 1024 * 1024 },
   monthly: {
     ai_requests: -1,
     study_sets: -1,
@@ -330,6 +330,42 @@ export class SubscriptionService implements OnModuleInit {
     const subscription = await this.findByUserId(userId);
     const plan = subscription?.plan || 'free';
     return plan === 'monthly' || plan === 'yearly';
+  }
+
+  async upgradeToPro(userId: string): Promise<void> {
+    const periodEnd = new Date();
+    periodEnd.setFullYear(periodEnd.getFullYear() + 10); // 10 years of Pro
+
+    const result = await this.db.query(
+      `UPDATE subscriptions SET
+        plan = 'yearly',
+        status = 'active',
+        current_period_start = $1,
+        current_period_end = $2,
+        cancel_at_period_end = false,
+        updated_at = $3
+       WHERE user_id = $4`,
+      [new Date(), periodEnd, new Date(), userId],
+    );
+
+    if (result && result.rowCount === 0) {
+      this.logger.warn(
+        `No existing subscription row found for user ${userId}. Creating a new PRO subscription.`,
+      );
+      await this.db.query(
+        `INSERT INTO subscriptions (user_id, stripe_customer_id, plan, status, current_period_start, current_period_end, cancel_at_period_end)
+         VALUES ($1, $2, 'yearly', 'active', $3, $4, false)
+         ON CONFLICT (user_id) DO UPDATE SET
+          plan = 'yearly',
+          status = 'active',
+          current_period_start = $3,
+          current_period_end = $4,
+          cancel_at_period_end = false`,
+        [userId, `local_${userId}`, new Date(), periodEnd],
+      );
+    } else {
+      this.logger.log(`User ${userId} upgraded to PRO via promo code`);
+    }
   }
 
   async checkAndIncrementUsage(userId: string, feature: string, amount = 1): Promise<void> {

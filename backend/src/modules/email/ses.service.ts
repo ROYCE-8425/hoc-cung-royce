@@ -61,7 +61,7 @@ export class SESService {
       this.logger.log(`SES Service initialized with region: ${sesConfig.region}`);
     }
 
-    this.defaultFrom = this.configService.get('EMAIL_DEFAULT_FROM', 'noreply@studyield.com');
+    this.defaultFrom = this.configService.get('EMAIL_DEFAULT_FROM', 'noreply@trannhuy.online');
     this.configurationSet = this.configService.get('SES_CONFIGURATION_SET');
   }
 
