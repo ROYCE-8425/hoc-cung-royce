@@ -493,7 +493,7 @@ Chay tu root repo:
 
 ```powershell
 git status --short --branch
-git grep -n -E "GOCSPX|xai-|sk-or-v1|AIza|AQ\.|GOOGLE_CLIENT_SECRET=|OPENAI_API_KEY=sk-|OPENROUTER_API_KEY=sk-|STRIPE_SECRET_KEY=sk_|whsec_" -- . ":!backend/package-lock.json" ":!frontend/package-lock.json"
+git grep -n -E "GOCSPX-[0-9A-Za-z_-]+|xai-[0-9A-Za-z_-]+|sk-or-v1-[0-9A-Za-z_-]+|AIza[0-9A-Za-z_-]{20,}|OPENAI_API_KEY=sk-[0-9A-Za-z_-]+|OPENROUTER_API_KEY=sk-or-v1-[0-9A-Za-z_-]+|STRIPE_SECRET_KEY=sk_(live|test)_[0-9A-Za-z]+|whsec_[0-9A-Za-z]+|GOOGLE_CLIENT_SECRET=[^[:space:]]+" -- . ":!backend/package-lock.json" ":!frontend/package-lock.json"
 docker compose --env-file .env.docker config --quiet
 ```
 
