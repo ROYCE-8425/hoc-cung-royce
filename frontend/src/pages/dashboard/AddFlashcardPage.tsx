@@ -30,7 +30,7 @@ export function AddFlashcardPage() {
 
   // ── Save state ───────────────────────────────────────────────────
   const [isSaving, setIsSaving] = useState(false);
-  const [saveError, setSaveError] = useState<string | null>(null);
+  const [saveError, setSaveError] = useState<string | React.ReactNode | null>(null);
 
   // ── Fetch study set title ────────────────────────────────────────
   useEffect(() => {
@@ -57,8 +57,23 @@ export function AddFlashcardPage() {
     try {
       await api.post(`/study-sets/${studySetId}/flashcards/bulk`, { flashcards: validCards });
       navigate(`/dashboard/study-sets/${studySetId}`);
-    } catch {
-      setSaveError(t('addFlashcard.failedSave'));
+    } catch (err: any) {
+      if (err.response?.data?.message?.includes('free plan limit')) {
+        setSaveError(
+          <div className="flex flex-col gap-2 text-sm leading-relaxed">
+            <p className="font-bold text-red-600 dark:text-red-400">Bạn đã đạt giới hạn tối đa số lượng thẻ của gói Miễn Phí.</p>
+            <p>
+              Nhập mã thử nghiệm <strong className="font-mono text-green-600 dark:text-green-400 bg-green-500/10 px-1.5 py-0.5 rounded border border-green-500/20">ILOVEENGLISH</strong> tại{' '}
+              <a href="/dashboard/subscription" className="underline font-bold text-green-600 dark:text-green-400 hover:text-green-500 transition-colors">
+                Trang Nâng Cấp Tài Khoản
+              </a>{' '}
+              để mở khóa gói PRO vĩnh viễn và tiếp tục lưu bài học không giới hạn!
+            </p>
+          </div>
+        );
+      } else {
+        setSaveError(t('addFlashcard.failedSave'));
+      }
     } finally {
       setIsSaving(false);
     }

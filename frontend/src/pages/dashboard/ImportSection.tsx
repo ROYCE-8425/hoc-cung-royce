@@ -927,13 +927,30 @@ function TextScreen({
   const [text, setText] = useState('');
   const [termSep, setTermSep] = useState('\\t');
   const [cardSep, setCardSep] = useState('\\n');
+  const [customTermSep, setCustomTermSep] = useState('|');
+  const [customCardSep, setCustomCardSep] = useState('\n');
 
-  const parseText = () => {
-    if (!text.trim()) return;
-    const sep = cardSep === '\\n' ? '\n' : cardSep;
-    const tSep = termSep === '\\t' ? '\t' : termSep;
-    const cards = text
-      .split(sep)
+
+
+  const getTermSep = () => {
+    if (termSep === 'custom') return customTermSep || '\t';
+    return termSep === '\\t' ? '\t' : termSep;
+  };
+
+  const getParsedCards = (): Array<{ front: string; back: string }> => {
+    if (!text.trim()) return [];
+
+    // Robust newline splitting supporting Windows (\r\n), Unix (\n) and Mac (\r)
+    let cSep: string | RegExp = '\n';
+    if (cardSep === 'custom') {
+      cSep = customCardSep || '\n';
+    } else {
+      cSep = cardSep === '\\n' ? /\r?\n|\r/ : cardSep;
+    }
+
+    const tSep = getTermSep();
+    return text
+      .split(cSep)
       .map((l) => l.trim())
       .filter(Boolean)
       .map((line) => {
@@ -941,13 +958,16 @@ function TextScreen({
         return { front: (parts[0] || '').trim(), back: (parts[1] || '').trim() };
       })
       .filter((c) => c.front);
-    onSubmit(cards);
   };
 
-  // Live preview count
-  const previewCount = text.trim()
-    ? text.split(cardSep === '\\n' ? '\n' : cardSep).filter((l) => l.trim()).length
-    : 0;
+  const parsedCards = getParsedCards();
+  const previewCount = parsedCards.length;
+
+  const parseText = () => {
+    if (parsedCards.length > 0) {
+      onSubmit(parsedCards);
+    }
+  };
 
   return (
     <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
@@ -982,7 +1002,17 @@ function TextScreen({
               <option value=",">Comma</option>
               <option value=";">Semicolon</option>
               <option value=" - ">Dash ( - )</option>
+              <option value="custom">Custom</option>
             </select>
+            {termSep === 'custom' && (
+              <input
+                type="text"
+                value={customTermSep}
+                onChange={(e) => setCustomTermSep(e.target.value)}
+                placeholder="Custom character"
+                className="mt-1.5 w-full px-2.5 py-1 text-xs bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500/20"
+              />
+            )}
           </div>
           <div>
             <label className="block text-xs font-medium mb-1">Between cards</label>
@@ -994,11 +1024,47 @@ function TextScreen({
               <option value="\\n">New line</option>
               <option value=";">Semicolon</option>
               <option value="||">Double pipe (||)</option>
+              <option value="custom">Custom</option>
             </select>
+            {cardSep === 'custom' && (
+              <input
+                type="text"
+                value={customCardSep}
+                onChange={(e) => setCustomCardSep(e.target.value)}
+                placeholder="Custom character"
+                className="mt-1.5 w-full px-2.5 py-1 text-xs bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500/20"
+              />
+            )}
           </div>
         </div>
 
-        <Button type="button" onClick={parseText} disabled={!text.trim()} className="w-full bg-green-500 hover:bg-green-600">
+        {/* Live Preview Demo */}
+        {parsedCards.length > 0 && (
+          <div className="space-y-2 mt-4">
+            <label className="block text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+              Xem trước {parsedCards.length} thẻ
+            </label>
+            <div className="border border-border rounded-xl overflow-hidden max-h-[220px] overflow-y-auto divide-y divide-border bg-[#070a13]/30">
+              {parsedCards.map((card, i) => (
+                <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-3 p-3 text-xs">
+                  <div className="flex gap-2">
+                    <span className="text-slate-500 font-mono select-none">{i + 1}</span>
+                    <div>
+                      <span className="text-[10px] font-semibold text-slate-500 uppercase block mb-0.5">Thuật ngữ</span>
+                      <p className="font-medium text-foreground">{card.front}</p>
+                    </div>
+                  </div>
+                  <div className="pl-5 md:pl-0">
+                    <span className="text-[10px] font-semibold text-slate-500 uppercase block mb-0.5">Định nghĩa</span>
+                    <p className="font-medium text-muted-foreground">{card.back || '—'}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        <Button type="button" onClick={parseText} disabled={previewCount === 0} className="w-full bg-green-500 hover:bg-green-600">
           <FileText className="w-4 h-4 mr-2" />
           Import {previewCount > 0 ? `${previewCount} ` : ''}Cards
         </Button>

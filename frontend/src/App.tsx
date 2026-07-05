@@ -79,6 +79,7 @@ import {
   AppearanceSettingsPage,
   ChatPage,
   ChatHistoryPage,
+  SubscriptionPage,
 } from '@/pages/dashboard';
 import { PublicLayout } from '@/layouts/PublicLayout';
 import { Button } from '@/components/ui/button';
@@ -159,6 +160,18 @@ function GuestRoute({ children }: { children: React.ReactNode }) {
 function App() {
   const { isLoading } = useAuth();
   const location = useLocation();
+
+  // Initialize and apply theme from localStorage on startup
+  useEffect(() => {
+    const storedTheme = localStorage.getItem('theme') || 'system';
+    const root = document.documentElement;
+    if (storedTheme === 'system') {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      root.classList.toggle('dark', prefersDark);
+    } else {
+      root.classList.toggle('dark', storedTheme === 'dark');
+    }
+  }, []);
 
   if (isLoading) {
     return <FullPageSpinner />;
@@ -678,6 +691,14 @@ function App() {
         element={
           <ProtectedRoute>
             <AppearanceSettingsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/dashboard/subscription"
+        element={
+          <ProtectedRoute>
+            <SubscriptionPage />
           </ProtectedRoute>
         }
       />

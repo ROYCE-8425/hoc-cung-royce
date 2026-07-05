@@ -47,6 +47,7 @@ export interface FlashcardEditorRef {
   getValidCards(): Array<{ front: string; back: string; type?: FlashcardType }>;
   getCardCounts(): { total: number; valid: number };
   reset(): void;
+  addCards(cards: Array<{ front: string; back: string }>): void;
 }
 
 export interface FlashcardEditorProps {
@@ -148,6 +149,17 @@ export const FlashcardEditor = forwardRef<FlashcardEditorRef, FlashcardEditorPro
         setAssistCardId(null);
         setAssistSuggestion(null);
         setSparkleId(null);
+      },
+      addCards(importedCards: Array<{ front: string; back: string }>) {
+        const newCards: DraftCard[] = importedCards.map((c) => ({
+          id: uid(),
+          front: c.front,
+          back: c.back,
+          type: 'standard' as FlashcardType,
+          source: 'import' as const,
+          selected: false,
+        }));
+        setCards((prev) => [...prev, ...newCards]);
       },
     }));
 

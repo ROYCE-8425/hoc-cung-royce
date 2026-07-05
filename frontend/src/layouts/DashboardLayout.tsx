@@ -78,8 +78,8 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
         {/* Logo */}
         <div className="h-16 flex-shrink-0 flex items-center justify-between px-4 border-b border-border">
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logos/studyield-logo.png" alt="Studyield" className="w-8 h-8 object-contain" />
-            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 bg-clip-text text-transparent">Studyield</span>
+            <img src="/logos/studyield-logo.png" alt="Học cùng Royce" className="w-8 h-8 object-contain" />
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-600 via-cyan-500 to-purple-600 bg-clip-text text-transparent">Học cùng Royce</span>
           </Link>
           <button
             onClick={() => setSidebarOpen(false)}

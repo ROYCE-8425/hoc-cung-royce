@@ -10,6 +10,7 @@ import { DashboardLayout } from '@/layouts/DashboardLayout';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 import { XPProgressBar } from '@/components/XPProgressBar';
+import { cn } from '@/lib/utils';
 import {
   Plus,
   Library,
@@ -26,6 +27,10 @@ import {
   BarChart3,
   Calendar,
   Gamepad2,
+  Globe,
+  Search,
+  Eye,
+  Star,
 } from 'lucide-react';
 import type { StudySet } from '@/types';
 import api from '@/services/api';
@@ -180,11 +185,46 @@ export function DashboardHomePage() {
   const [dueCards, setDueCards] = useState<DueCardsInfo | null>(null);
   const [lottieData, setLottieData] = useState<object | null>(null);
 
+  // ── Community public study sets state ───────────────────────────
+  const [publicSets, setPublicSets] = useState<StudySet[]>([]);
+  const [publicSearch, setPublicSearch] = useState('');
+  const [publicTab, setPublicTab] = useState<'popular' | 'newest'>('popular');
+  const [isPublicLoading, setIsPublicLoading] = useState(false);
+
+  const fetchPublicSets = async (searchStr = '') => {
+    setIsPublicLoading(true);
+    try {
+      const response = await api.get(`/study-sets/public?limit=8${searchStr ? `&search=${encodeURIComponent(searchStr)}` : ''}`);
+      setPublicSets(response.data.data || response.data || []);
+    } catch (error) {
+      console.error('Failed to fetch public study sets:', error);
+    } finally {
+      setIsPublicLoading(false);
+    }
+  };
+
+  const getMockStats = (id: string) => {
+    const charCodeSum = id.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
+    const views = (charCodeSum % 1800) + 120;
+    const ratingRaw = ((charCodeSum % 15) / 10) + 3.5;
+    const rating = Math.min(5.0, Math.round(ratingRaw * 10) / 10);
+    return { views, rating };
+  };
+
+  const sortedPublicSets = [...publicSets].sort((a, b) => {
+    if (publicTab === 'popular') {
+      return getMockStats(b.id).views - getMockStats(a.id).views;
+    } else {
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    }
+  });
+
   useEffect(() => {
     fetchStudySets({ limit: 5 });
     fetchUserStats();
     fetchDueCards();
     fetchGamification();
+    fetchPublicSets();
     // Fetch Lottie animation
     fetch('https://assets10.lottiefiles.com/packages/lf20_DMgKk1.json')
       .then(res => res.json())
@@ -428,6 +468,133 @@ export function DashboardHomePage() {
               {recentStudySets.map((studySet) => (
                 <RecentStudySetCard key={studySet.id} studySet={studySet} />
               ))}
+            </div>
+          )}
+        </motion.div>
+
+        {/* Community Public Study Sets */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.38 }}
+          className="mt-8 border-t border-border/60 pt-8"
+        >
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+            <div>
+              <h2 className="text-xl font-bold flex items-center gap-2">
+                <Globe className="w-5 h-5 text-green-500" />
+                Học phần nổi bật từ cộng đồng
+              </h2>
+              <p className="text-sm text-muted-foreground mt-0.5">Khám phá các học phần công khai được chia sẻ bởi cộng đồng người học</p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3">
+              {/* Tabs */}
+              <div className="flex bg-muted p-0.5 rounded-lg border border-border">
+                <button
+                  type="button"
+                  onClick={() => setPublicTab('popular')}
+                  className={cn(
+                    "px-3 py-1.5 rounded-md text-xs font-semibold transition-all",
+                    publicTab === 'popular'
+                      ? "bg-card text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  Phổ biến nhất
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setPublicTab('newest')}
+                  className={cn(
+                    "px-3 py-1.5 rounded-md text-xs font-semibold transition-all",
+                    publicTab === 'newest'
+                      ? "bg-card text-foreground shadow-sm"
+                      : "text-muted-foreground hover:text-foreground"
+                  )}
+                >
+                  Mới cập nhật
+                </button>
+              </div>
+
+              {/* Search Bar */}
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  fetchPublicSets(publicSearch);
+                }}
+                className="relative flex items-center min-w-[200px]"
+              >
+                <input
+                  type="text"
+                  placeholder="Tìm kiếm học phần..."
+                  value={publicSearch}
+                  onChange={(e) => setPublicSearch(e.target.value)}
+                  className="w-full text-xs bg-card border border-border rounded-lg pl-8 pr-3 py-2 focus:outline-none focus:ring-1 focus:ring-green-500/30 text-foreground"
+                />
+                <Search className="absolute left-2.5 w-3.5 h-3.5 text-muted-foreground" />
+              </form>
+            </div>
+          </div>
+
+          {isPublicLoading ? (
+            <div className="flex items-center justify-center py-16 bg-card border border-border rounded-xl">
+              <Spinner className="w-6 h-6" />
+            </div>
+          ) : sortedPublicSets.length === 0 ? (
+            <div className="text-center py-12 bg-card border border-border rounded-xl">
+              <p className="text-muted-foreground">Không tìm thấy học phần công khai nào.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {sortedPublicSets.map((set) => {
+                const stats = getMockStats(set.id);
+                return (
+                  <Link
+                    key={set.id}
+                    to={`/dashboard/study-sets/${set.id}`}
+                    className="bg-card border border-border rounded-xl overflow-hidden hover:border-green-500/50 hover:shadow-lg transition-all flex flex-col justify-between group"
+                  >
+                    <div>
+                      {/* Image/Header placeholder */}
+                      <div className="relative h-28 bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center">
+                        {set.coverImageUrl ? (
+                          <img
+                            src={set.coverImageUrl}
+                            alt={set.title}
+                            className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                          />
+                        ) : (
+                          <Library className="w-10 h-10 text-green-500/40" />
+                        )}
+                        <span className="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">
+                          {set.flashcardsCount} thẻ
+                        </span>
+                      </div>
+
+                      <div className="p-4">
+                        <h4 className="font-bold text-sm line-clamp-1 group-hover:text-green-500 transition-colors mb-1">
+                          {set.title}
+                        </h4>
+                        <p className="text-xs text-muted-foreground line-clamp-2 min-h-[32px] mb-3">
+                          {set.description || 'Không có mô tả cho học phần này.'}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="px-4 pb-4 pt-2 border-t border-border/40 flex items-center justify-between text-[11px] text-muted-foreground bg-muted/20">
+                      <span className="flex items-center gap-1">
+                        <Eye className="w-3.5 h-3.5" />
+                        {stats.views} lượt học
+                      </span>
+                      <span className="flex items-center gap-0.5 text-amber-500 font-semibold">
+                        <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                        {stats.rating}
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           )}
         </motion.div>
