@@ -4,6 +4,7 @@ import { ConfigService } from '@nestjs/config';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { IoAdapter } from '@nestjs/platform-socket.io';
 import { AppModule } from './app.module';
+import { isCorsOriginAllowed } from './common/config/cors-origins';
 import * as bodyParser from 'body-parser';
 
 async function bootstrap() {
@@ -23,21 +24,20 @@ async function bootstrap() {
   const apiPrefix = configService.get<string>('API_PREFIX', 'api/v1');
   app.setGlobalPrefix(apiPrefix);
 
-  // CORS — reflect request origin for dev flexibility
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  app.use((req: any, res: any, next: any) => {
-    res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
-    res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS');
-    res.header(
-      'Access-Control-Allow-Headers',
-      'Origin,X-Requested-With,Content-Type,Accept,Authorization',
-    );
-    res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Max-Age', '86400');
-    if (req.method === 'OPTIONS') {
-      return res.status(200).end();
-    }
-    next();
+  // CORS uses an explicit whitelist because auth requests include credentials.
+  app.enableCors({
+    origin: (origin, callback) => {
+      if (isCorsOriginAllowed(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error(`Origin ${origin} is not allowed by CORS`), false);
+    },
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Authorization'],
+    credentials: true,
+    maxAge: 86400,
   });
 
   // Validation Pipe
@@ -57,8 +57,8 @@ async function bootstrap() {
 
   // Swagger Documentation
   const swaggerConfig = new DocumentBuilder()
-    .setTitle('Học cùng Royce API')
-    .setDescription('Học cùng Royce AI-powered learning platform API')
+    .setTitle('Hoc cung Royce API')
+    .setDescription('Hoc cung Royce AI-powered learning platform API')
     .setVersion('1.0.0')
     .addBearerAuth()
     .addTag('Health', 'Health check endpoints')
@@ -93,9 +93,9 @@ async function bootstrap() {
   const port = configService.get<number>('PORT', 3010);
   await app.listen(port);
 
-  logger.log(`🚀 Application is running on: http://localhost:${port}`);
-  logger.log(`📚 Swagger documentation: http://localhost:${port}/${apiPrefix}/docs`);
-  logger.log(`🔌 WebSocket server ready`);
+  logger.log(`Application is running on: http://localhost:${port}`);
+  logger.log(`Swagger documentation: http://localhost:${port}/${apiPrefix}/docs`);
+  logger.log('WebSocket server ready');
 }
 
 bootstrap();

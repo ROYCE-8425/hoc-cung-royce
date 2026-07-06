@@ -66,14 +66,15 @@ export class SubscriptionController {
 
   @Post('promo-code')
   @ApiOperation({ summary: 'Apply promo code to upgrade to PRO' })
-  async applyPromoCode(
-    @CurrentUser() user: JwtPayload,
-    @Body() body: { code: string },
-  ) {
+  async applyPromoCode(@CurrentUser() user: JwtPayload, @Body() body: { code: string }) {
     if (body.code?.trim().toUpperCase() === 'ILOVEENGLISH') {
       await this.subscriptionService.upgradeToPro(user.sub);
-      return { success: true, message: 'Chúc mừng! Bạn đã nâng cấp thành công gói PRO (10 năm)!' };
+      return {
+        success: true,
+        message: 'Chuc mung! Ban da nang cap thanh cong goi PRO (10 nam)!',
+      };
     }
-    throw new BadRequestException('Mã khuyến mãi không hợp lệ hoặc đã hết hạn.');
+
+    throw new BadRequestException('Ma khuyen mai khong hop le hoac da het han.');
   }
 }

@@ -1,8 +1,8 @@
 {
   "name": "hoc-cung-royce-backend",
   "version": "1.0.0",
-  "description": "Học cùng Royce AI Learning Platform Backend",
-  "author": "Học cùng Royce Team",
+  "description": "Hoc cung Royce AI Learning Platform Backend",
+  "author": "Hoc cung Royce Team",
   "private": true,
   "license": "AGPL-3.0-only",
   "scripts": {
@@ -12,14 +12,15 @@
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+    "lint": "eslint {src,apps,libs,test}/**/*.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "migrate": "node scripts/migrate.js",
-    "migrate:create": "node scripts/create-migration.js"
+    "migrate:create": "node scripts/create-migration.js",
+    "lint:fix": "eslint {src,apps,libs,test}/**/*.ts --fix"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.490.0",

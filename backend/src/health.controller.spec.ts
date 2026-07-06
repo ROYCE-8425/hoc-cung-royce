@@ -6,9 +6,6 @@ import { QdrantService } from './modules/qdrant/qdrant.service';
 
 describe('HealthController', () => {
   let controller: HealthController;
-  let databaseService: DatabaseService;
-  let redisService: RedisService;
-  let qdrantService: QdrantService;
 
   const mockDatabaseService = {
     healthCheck: jest.fn().mockResolvedValue(true),
@@ -33,9 +30,6 @@ describe('HealthController', () => {
     }).compile();
 
     controller = module.get<HealthController>(HealthController);
-    databaseService = module.get<DatabaseService>(DatabaseService);
-    redisService = module.get<RedisService>(RedisService);
-    qdrantService = module.get<QdrantService>(QdrantService);
   });
 
   afterEach(() => {

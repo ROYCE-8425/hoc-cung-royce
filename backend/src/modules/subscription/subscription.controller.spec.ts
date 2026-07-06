@@ -48,32 +48,32 @@ describe('SubscriptionController', () => {
       expect(service.upgradeToPro).toHaveBeenCalledWith('user-uuid-1234');
       expect(result).toEqual({
         success: true,
-        message: 'Chúc mừng! Bạn đã nâng cấp thành công gói PRO (10 năm)!',
+        message: 'Chuc mung! Ban da nang cap thanh cong goi PRO (10 nam)!',
       });
     });
 
-    it('should successfully upgrade to PRO when code has spaces and lowercase (normalization)', async () => {
+    it('should successfully upgrade to PRO when code has spaces and lowercase', async () => {
       const result = await controller.applyPromoCode(mockUser, { code: '  iloveenglish  ' });
 
       expect(service.upgradeToPro).toHaveBeenCalledWith('user-uuid-1234');
       expect(result).toEqual({
         success: true,
-        message: 'Chúc mừng! Bạn đã nâng cấp thành công gói PRO (10 năm)!',
+        message: 'Chuc mung! Ban da nang cap thanh cong goi PRO (10 nam)!',
       });
     });
 
     it('should throw BadRequestException when code is invalid', async () => {
-      await expect(
-        controller.applyPromoCode(mockUser, { code: 'INVALIDCODE' }),
-      ).rejects.toThrow(BadRequestException);
+      await expect(controller.applyPromoCode(mockUser, { code: 'INVALIDCODE' })).rejects.toThrow(
+        BadRequestException,
+      );
 
       expect(service.upgradeToPro).not.toHaveBeenCalled();
     });
 
     it('should throw BadRequestException when code is empty or missing', async () => {
-      await expect(
-        controller.applyPromoCode(mockUser, { code: '' }),
-      ).rejects.toThrow(BadRequestException);
+      await expect(controller.applyPromoCode(mockUser, { code: '' })).rejects.toThrow(
+        BadRequestException,
+      );
 
       expect(service.upgradeToPro).not.toHaveBeenCalled();
     });

@@ -10,14 +10,12 @@ import { BaseGateway } from '../../common/gateways/base.gateway';
 import { LiveQuizService, LiveQuestion } from './live-quiz.service';
 import { QuizService } from './quiz.service';
 import { SubscriptionService } from '../subscription/subscription.service';
+import { getCorsOrigins } from '../../common/config/cors-origins';
 
 @WebSocketGateway({
   namespace: 'live-quiz',
   cors: {
-    origin: process.env.CORS_ORIGINS?.split(',') || [
-      'http://localhost:3010',
-      'http://localhost:5189',
-    ],
+    origin: getCorsOrigins(),
     credentials: true,
   },
 })

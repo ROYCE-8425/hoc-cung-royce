@@ -79,7 +79,10 @@ export class AiService implements OnModuleInit {
     if (openRouterKey && !openRouterKey.includes('your-')) {
       this.openRouterClient = new OpenAI({
         apiKey: openRouterKey,
-        baseURL: this.configService.get<string>('OPENROUTER_BASE_URL', 'https://openrouter.ai/api/v1'),
+        baseURL: this.configService.get<string>(
+          'OPENROUTER_BASE_URL',
+          'https://openrouter.ai/api/v1',
+        ),
         defaultHeaders: {
           'HTTP-Referer': this.configService.get<string>('FRONTEND_URL', 'http://localhost:5189'),
           'X-Title': 'Học cùng Royce',

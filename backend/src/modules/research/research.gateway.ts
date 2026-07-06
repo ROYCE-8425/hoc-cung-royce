@@ -10,8 +10,9 @@ import { Server, Socket } from 'socket.io';
 import { WsAuthGuard } from '../../common/guards/ws-auth.guard';
 import { WsExceptionFilter } from '../../common/filters/ws-exception.filter';
 import { SubscriptionService } from '../subscription/subscription.service';
+import { getCorsOrigins } from '../../common/config/cors-origins';
 
-@WebSocketGateway({ namespace: 'research', cors: { origin: '*', credentials: true } })
+@WebSocketGateway({ namespace: 'research', cors: { origin: getCorsOrigins(), credentials: true } })
 @UseGuards(WsAuthGuard)
 @UseFilters(WsExceptionFilter)
 export class ResearchGateway {

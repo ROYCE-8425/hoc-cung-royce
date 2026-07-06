@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { useAuth } from '@/contexts/AuthContext';
 import api from '@/services/api';
+import { getApiErrorMessage } from '@/utils/apiError';
 import {
   Crown,
   Check,
@@ -45,8 +46,8 @@ export function SubscriptionPage() {
       setSuccessMsg(response.data.message || 'Chúc mừng! Bạn đã nâng cấp lên PRO thành công!');
       setPromoCode('');
       await refreshUser();
-    } catch (err: any) {
-      setErrorMsg(err.response?.data?.message || 'Áp dụng mã thất bại. Vui lòng kiểm tra lại.');
+    } catch (err: unknown) {
+      setErrorMsg(getApiErrorMessage(err) || 'Áp dụng mã thất bại. Vui lòng kiểm tra lại.');
     } finally {
       setIsLoading(false);
     }

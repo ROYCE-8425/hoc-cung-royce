@@ -12,6 +12,7 @@ import { WsAuthGuard } from '../../common/guards/ws-auth.guard';
 import { WsExceptionFilter } from '../../common/filters/ws-exception.filter';
 import { DatabaseService } from '../database/database.service';
 import { SubscriptionService } from '../subscription/subscription.service';
+import { getCorsOrigins } from '../../common/config/cors-origins';
 import { v4 as uuidv4 } from 'uuid';
 
 interface SessionParticipant {
@@ -27,10 +28,7 @@ interface SessionParticipant {
 @WebSocketGateway({
   namespace: 'exam-clone',
   cors: {
-    origin: process.env.CORS_ORIGINS?.split(',') || [
-      'http://localhost:3010',
-      'http://localhost:5189',
-    ],
+    origin: getCorsOrigins(),
     credentials: true,
   },
 })

@@ -108,7 +108,8 @@ export class EmailService {
       await this.logEmail({
         userId: options.userId,
         to: Array.isArray(options.to) ? options.to : [options.to],
-        from: options.from || this.configService.get('EMAIL_DEFAULT_FROM', 'noreply@trannhuy.online'),
+        from:
+          options.from || this.configService.get('EMAIL_DEFAULT_FROM', 'noreply@trannhuy.online'),
         subject: options.subject,
         status: 'failed',
         error: (error as Error).message,

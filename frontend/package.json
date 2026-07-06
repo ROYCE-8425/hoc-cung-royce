@@ -4,7 +4,7 @@
   "license": "AGPL-3.0-only",
   "version": "1.0.0",
   "type": "module",
-  "description": "Học cùng Royce - AI-Powered Learning Platform Frontend",
+  "description": "Hoc cung Royce - AI-Powered Learning Platform Frontend",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

@@ -10,8 +10,12 @@ import { Server, Socket } from 'socket.io';
 import { CodeSandboxService, ExecuteCodeDto } from './code-sandbox.service';
 import { WsAuthGuard } from '../../common/guards/ws-auth.guard';
 import { WsExceptionFilter } from '../../common/filters/ws-exception.filter';
+import { getCorsOrigins } from '../../common/config/cors-origins';
 
-@WebSocketGateway({ namespace: 'code-sandbox', cors: { origin: '*', credentials: true } })
+@WebSocketGateway({
+  namespace: 'code-sandbox',
+  cors: { origin: getCorsOrigins(), credentials: true },
+})
 @UseGuards(WsAuthGuard)
 @UseFilters(WsExceptionFilter)
 export class CodeSandboxGateway {

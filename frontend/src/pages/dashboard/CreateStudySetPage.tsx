@@ -9,6 +9,7 @@ import api from '@/services/api';
 import { ENDPOINTS } from '@/config/api';
 import { FlashcardEditor, type FlashcardEditorRef } from './FlashcardEditor';
 import type { CreateStudySetRequest } from '@/types';
+import { getApiErrorMessage } from '@/utils/apiError';
 import {
   ArrowLeft,
   X,
@@ -115,8 +116,8 @@ export function CreateStudySetPage() {
     if (!formData.title.trim()) return;
     const validCards = editorRef.current?.getValidCards() || [];
 
-    const handleLimitError = (err: any, fallbackMessage: string) => {
-      if (err.response?.data?.message?.includes('free plan limit')) {
+    const handleLimitError = (err: unknown, fallbackMessage: string) => {
+      if (getApiErrorMessage(err)?.includes('free plan limit')) {
         setSaveError(
           <div className="flex flex-col gap-2 text-sm leading-relaxed">
             <p className="font-bold text-red-600 dark:text-red-400">Bạn đã đạt giới hạn tối đa của gói Miễn Phí.</p>
@@ -138,7 +139,7 @@ export function CreateStudySetPage() {
       try {
         const studySet = await api.post(ENDPOINTS.studySets.create, formData);
         navigate(`/dashboard/study-sets/${studySet.data.id}`);
-      } catch (err: any) {
+      } catch (err: unknown) {
         handleLimitError(err, t('createStudySet.failedCreate'));
       }
       return;
@@ -151,7 +152,7 @@ export function CreateStudySetPage() {
       const studySetId = setRes.data.id;
       await api.post(`/study-sets/${studySetId}/flashcards/bulk`, { flashcards: validCards });
       navigate(`/dashboard/study-sets/${studySetId}`);
-    } catch (err: any) {
+    } catch (err: unknown) {
       handleLimitError(err, t('createStudySet.failedCreateRetry'));
     } finally {
       setIsSaving(false);

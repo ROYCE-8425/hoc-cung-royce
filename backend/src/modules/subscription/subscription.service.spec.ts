@@ -8,7 +8,7 @@ describe('SubscriptionService', () => {
   let db: DatabaseService;
 
   const mockConfigService = {
-    get: jest.fn().mockImplementation((key: string, defaultValue?: any) => {
+    get: jest.fn().mockImplementation((key: string, defaultValue?: unknown) => {
       if (key === 'STRIPE_SECRET_KEY') return 'sk_test_mock_stripe_key_longer_than_normal';
       if (key === 'STRIPE_PRICE_ID_MONTHLY') return 'price_monthly_id_123456';
       if (key === 'STRIPE_PRICE_ID_YEARLY') return 'price_yearly_id_123456';

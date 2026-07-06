@@ -9,6 +9,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { FlashcardEditor, type FlashcardEditorRef } from './FlashcardEditor';
 import api from '@/services/api';
 import type { UpdateStudySetRequest } from '@/types';
+import { getApiErrorMessage } from '@/utils/apiError';
 import {
   ArrowLeft,
   X,
@@ -148,8 +149,8 @@ export function EditStudySetPage() {
         await api.post(`/study-sets/${id}/flashcards/bulk`, { flashcards: validCards });
       }
       navigate(`/dashboard/study-sets/${id}`);
-    } catch (err: any) {
-      if (err.response?.data?.message?.includes('free plan limit')) {
+    } catch (err: unknown) {
+      if (getApiErrorMessage(err)?.includes('free plan limit')) {
         setSaveError(
           <div className="flex flex-col gap-2 text-sm leading-relaxed">
             <p className="font-bold text-red-600 dark:text-red-400">Bạn đã đạt giới hạn tối đa số lượng thẻ của gói Miễn Phí.</p>
