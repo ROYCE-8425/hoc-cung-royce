@@ -36,7 +36,7 @@ sleep 5
 timeout=60
 counter=0
 while [ $counter -lt $timeout ]; do
-    if docker compose --env-file .env.docker ps | grep -q "studyield-postgres.*healthy"; then
+    if docker compose --env-file .env.docker ps | grep -q "royce-postgres.*healthy"; then
         echo -e "${GREEN}PostgreSQL is healthy!${NC}"
         break
     fi
@@ -53,7 +53,7 @@ fi
 
 # Check Redis health
 echo -n "Checking Redis... "
-if docker compose --env-file .env.docker ps | grep -q "studyield-redis.*healthy"; then
+if docker compose --env-file .env.docker ps | grep -q "royce-redis.*healthy"; then
     echo -e "${GREEN}healthy!${NC}"
 else
     echo -e "${YELLOW}waiting...${NC}"
