@@ -31,7 +31,7 @@ export class QdrantService implements OnModuleInit {
 
   constructor(private readonly configService: ConfigService) {
     this.hostConfigured = !!this.configService.get<string>('QDRANT_HOST');
-    this.collectionPrefix = this.configService.get<string>('QDRANT_COLLECTION_PREFIX', 'studyield');
+    this.collectionPrefix = this.configService.get<string>('QDRANT_COLLECTION_PREFIX', 'royce');
   }
 
   async onModuleInit() {

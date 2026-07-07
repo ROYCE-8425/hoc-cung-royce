@@ -482,16 +482,6 @@ Wir begrüßen Beiträge! Siehe unseren [Beitragsleitfaden](CONTRIBUTING.md), um
 - Verbessern Sie die Dokumentation
 - Fügen Sie Übersetzungen hinzu (wir unterstützen 12 Sprachen)
 
-## Mitwirkende
-
-Vielen Dank an alle großartigen Menschen, die zu Học cùng Royce beigetragen haben! 🎉
-
-<a href="https://github.com/ROYCE-8425/quiz_study/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ROYCE-8425/quiz_study&max=100&columns=10" />
-</a>
-
-Möchten Sie Ihr Gesicht hier sehen? Schauen Sie sich unseren [Beitragsleitfaden](CONTRIBUTING.md) an und beginnen Sie noch heute beizutragen!
-
 ## 💬 Treten Sie unserer Community bei
 
 Vernetzen Sie sich mit Entwicklern, erhalten Sie Hilfe und bleiben Sie über die neuesten Entwicklungen von Học cùng Royce auf dem Laufenden!

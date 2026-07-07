@@ -283,9 +283,7 @@ docker compose --env-file .env.docker up -d
 
 Học cùng Royce-এ অবদান রেখেছেন এমন সকল আশ্চর্যজনক মানুষদের ধন্যবাদ! 🎉
 
-<a href="https://github.com/ROYCE-8425/quiz_study/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ROYCE-8425/quiz_study&max=100&columns=10" />
-</a>
+
 
 ## 💬 আমাদের সম্প্রদায়ে যোগ দিন
 

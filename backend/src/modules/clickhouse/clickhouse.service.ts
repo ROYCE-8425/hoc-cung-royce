@@ -23,7 +23,7 @@ export class ClickhouseService implements OnModuleInit {
     const port = this.configService.get<number>('CLICKHOUSE_PORT', 8123);
     const user = this.configService.get<string>('CLICKHOUSE_USER', 'default');
     const password = this.configService.get<string>('CLICKHOUSE_PASSWORD', '');
-    this.database = this.configService.get<string>('CLICKHOUSE_DATABASE', 'studyield');
+    this.database = this.configService.get<string>('CLICKHOUSE_DATABASE', 'royce');
 
     this.client = new ClickHouse({
       url: `http://${host}`,

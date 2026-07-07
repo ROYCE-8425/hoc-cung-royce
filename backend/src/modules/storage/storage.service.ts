@@ -40,7 +40,7 @@ export class StorageService implements OnModuleInit {
     const accountId = this.configService.get<string>('R2_ACCOUNT_ID');
     const accessKeyId = this.configService.get<string>('R2_ACCESS_KEY_ID');
     const secretAccessKey = this.configService.get<string>('R2_SECRET_ACCESS_KEY');
-    this.bucket = this.configService.get<string>('R2_BUCKET_NAME', 'studyield');
+    this.bucket = this.configService.get<string>('R2_BUCKET_NAME', 'royce');
     this.publicUrl = this.configService.get<string>('R2_PUBLIC_URL', '');
 
     this.client = new S3Client({

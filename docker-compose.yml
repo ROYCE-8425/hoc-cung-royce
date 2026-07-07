@@ -6,12 +6,12 @@ services:
   # --- Infrastructure -----------------------------------------------
   postgres:
     image: postgres:15-alpine
-    container_name: studyield-postgres
+    container_name: royce-postgres
     restart: unless-stopped
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
-      POSTGRES_DB: ${POSTGRES_DB:-studyield_dev}
+      POSTGRES_DB: ${POSTGRES_DB:-royce_dev}
     ports:
       - "${POSTGRES_PORT:-5432}:5432"
     volumes:
@@ -24,7 +24,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: studyield-redis
+    container_name: royce-redis
     restart: unless-stopped
     command: redis-server --appendonly yes
     ports:
@@ -39,7 +39,7 @@ services:
 
   qdrant:
     image: qdrant/qdrant:latest
-    container_name: studyield-qdrant
+    container_name: royce-qdrant
     restart: unless-stopped
     ports:
       - "${QDRANT_PORT:-6333}:6333"
@@ -51,14 +51,14 @@ services:
 
   clickhouse:
     image: clickhouse/clickhouse-server:latest
-    container_name: studyield-clickhouse
+    container_name: royce-clickhouse
     restart: unless-stopped
     ports:
       - "${CLICKHOUSE_PORT:-8123}:8123"
     volumes:
       - clickhouse_data:/var/lib/clickhouse
     environment:
-      CLICKHOUSE_DB: ${CLICKHOUSE_DATABASE:-studyield_analytics}
+      CLICKHOUSE_DB: ${CLICKHOUSE_DATABASE:-royce_analytics}
       CLICKHOUSE_USER: ${CLICKHOUSE_USER:-default}
       CLICKHOUSE_PASSWORD: ${CLICKHOUSE_PASSWORD:-}
     healthcheck:
@@ -72,7 +72,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: studyield-backend
+    container_name: royce-backend
     restart: unless-stopped
     ports:
       - "${BACKEND_PORT:-3010}:3010"
@@ -88,7 +88,7 @@ services:
       - DATABASE_PORT=5432
       - DATABASE_USER=${POSTGRES_USER:-postgres}
       - DATABASE_PASSWORD=${POSTGRES_PASSWORD:-postgres}
-      - DATABASE_NAME=${POSTGRES_DB:-studyield_dev}
+      - DATABASE_NAME=${POSTGRES_DB:-royce_dev}
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - QDRANT_HOST=qdrant
@@ -111,7 +111,7 @@ services:
       dockerfile: Dockerfile
       args:
         VITE_API_URL: ${VITE_API_URL:-http://localhost:3010/api/v1}
-    container_name: studyield-frontend
+    container_name: royce-frontend
     restart: unless-stopped
     ports:
       - "${FRONTEND_PORT:-5189}:80"

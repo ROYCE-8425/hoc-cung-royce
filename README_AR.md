@@ -288,14 +288,6 @@ docker compose --env-file .env.docker up -d
 
 نرحب بالمساهمات! راجع [دليل المساهمة](CONTRIBUTING.md) للبدء.
 
-## المساهمون
-
-شكرًا لجميع الأشخاص الرائعين الذين ساهموا في Học cùng Royce! 🎉
-
-<a href="https://github.com/ROYCE-8425/quiz_study/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ROYCE-8425/quiz_study&max=100&columns=10" />
-</a>
-
 ## 💬 انضم إلى مجتمعنا
 
 تواصل مع المطورين واحصل على المساعدة وابق على اطلاع بأحدث تطورات Học cùng Royce!

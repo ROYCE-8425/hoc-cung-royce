@@ -487,9 +487,7 @@ Nous accueillons les contributions ! Consultez notre [Guide de contribution](CON
 
 Merci à toutes les personnes formidables qui ont contribué à Học cùng Royce ! 🎉
 
-<a href="https://github.com/ROYCE-8425/quiz_study/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ROYCE-8425/quiz_study&max=100&columns=10" />
-</a>
+
 
 Vous voulez voir votre visage ici ? Consultez notre [Guide de contribution](CONTRIBUTING.md) et commencez à contribuer aujourd'hui !
 

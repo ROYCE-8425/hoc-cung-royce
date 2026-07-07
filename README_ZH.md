@@ -482,16 +482,6 @@ git push origin feature/your-feature-name
 - 改进文档
 - 添加翻译（我们支持12种语言）
 
-## 贡献者
-
-感谢所有为Học cùng Royce做出贡献的了不起的人！🎉
-
-<a href="https://github.com/ROYCE-8425/quiz_study/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ROYCE-8425/quiz_study&max=100&columns=10" />
-</a>
-
-想在这里看到您的面孔吗？查看我们的[贡献指南](CONTRIBUTING.md)并立即开始贡献！
-
 ## 💬 加入我们的社区
 
 与开发者联系，获得帮助，并了解Học cùng Royce的最新发展！

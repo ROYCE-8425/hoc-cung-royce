@@ -486,9 +486,7 @@ git push origin feature/your-feature-name
 
 ¡Gracias a todas las personas increíbles que han contribuido a Học cùng Royce! 🎉
 
-<a href="https://github.com/ROYCE-8425/quiz_study/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ROYCE-8425/quiz_study&max=100&columns=10" />
-</a>
+
 
 ¿Quieres ver tu cara aquí? ¡Consulta nuestra [Guía de contribución](CONTRIBUTING.md) y comienza a contribuir hoy!
 
