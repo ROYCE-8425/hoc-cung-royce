@@ -29,6 +29,7 @@ const pool = new Pool({
   user: process.env.DATABASE_USER || 'studyield',
   password: process.env.DATABASE_PASSWORD || '',
   database: process.env.DATABASE_NAME || 'studyield',
+  ssl: { rejectUnauthorized: false },
 });
 
 async function migrate() {
