@@ -80,7 +80,7 @@ Unlike traditional learning platforms that focus solely on content delivery or A
 - **🔬 Deep Research Mode** -- RAG from uploaded materials + web search, produces structured reports with citations
 - **💻 Code Sandbox** -- Secure Python execution with NumPy, Pandas, and scientific library support
 - **📚 Knowledge Base** -- Upload documents (PDF, DOCX) for semantic search and RAG
-- **🃏 Flashcards with SRS** -- Spaced repetition system for optimal memorization
+- **🃏 Flashcards with SRS** -- Spaced repetition system for optimal memorization, featuring auto-pronounce (TTS) with customizable voices/accents, question-answer language swapping, and card shuffling.
 - **📝 AI-Generated Quizzes** -- Automatic quiz generation from study materials
 - **💬 RAG Chat** -- Conversational AI with citations from your documents
 - **🗺️ Learning Paths** -- AI-generated optimal study routes

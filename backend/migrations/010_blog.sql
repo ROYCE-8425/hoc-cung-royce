@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS blog_posts (
     cover_image TEXT,
     category VARCHAR(50) NOT NULL DEFAULT 'general',
     tags JSONB DEFAULT '[]',
-    author_name VARCHAR(100) NOT NULL DEFAULT 'Studyield Team',
+    author_name VARCHAR(100) NOT NULL DEFAULT 'Học cùng Royce Team',
     author_avatar TEXT,
     read_time INT NOT NULL DEFAULT 5,
     is_published BOOLEAN DEFAULT TRUE,
@@ -52,15 +52,15 @@ Have you ever crammed for an exam the night before, only to forget everything a 
 
 Spaced repetition is based on the **forgetting curve**, discovered by Hermann Ebbinghaus in 1885. The forgetting curve shows that we lose newly learned information at an exponential rate — unless we actively review it at strategic intervals.
 
-The SM-2 algorithm, which powers Studyield''s flashcard system, calculates the optimal time to review each card based on:
+The SM-2 algorithm, which powers Học cùng Royce''s flashcard system, calculates the optimal time to review each card based on:
 
 - **Ease factor**: How difficult you find the material
 - **Interval**: Time between reviews
 - **Repetitions**: How many times you''ve successfully recalled the information
 
-### Why Studyield Makes It Easy
+### Why Học cùng Royce Makes It Easy
 
-With Studyield, you don''t need to track any of this manually. Our intelligent flashcard system automatically:
+With Học cùng Royce, you don''t need to track any of this manually. Our intelligent flashcard system automatically:
 
 1. **Schedules reviews** at the optimal time
 2. **Adjusts difficulty** based on your performance
@@ -73,28 +73,28 @@ A 2019 meta-analysis published in *Psychological Bulletin* found that spaced pra
 
 ### Getting Started
 
-Create your first study set on Studyield and let our spaced repetition system handle the rest. Your brain will thank you.
+Create your first study set on Học cùng Royce and let our spaced repetition system handle the rest. Your brain will thank you.
 
 ---
 
-*Start studying smarter today with Studyield''s built-in spaced repetition system.*',
+*Start studying smarter today with Học cùng Royce''s built-in spaced repetition system.*',
  'study-tips',
  '["spaced repetition", "memory", "learning science", "flashcards"]',
- 'Studyield Team',
+ 'Học cùng Royce Team',
  7,
  NOW() - INTERVAL '2 days'),
 
 ('ai-powered-studying',
  'How AI Is Revolutionizing the Way Students Study',
- 'From generating flashcards to solving complex problems, AI tools are transforming education. Here''s how Studyield puts AI to work for you.',
+ 'From generating flashcards to solving complex problems, AI tools are transforming education. Here''s how Học cùng Royce puts AI to work for you.',
  '## How AI Is Revolutionizing the Way Students Study
 
-Artificial intelligence is no longer a futuristic concept — it''s here, and it''s changing the way millions of students learn every day. At Studyield, we''ve integrated AI deeply into the study experience to help you work smarter, not harder.
+Artificial intelligence is no longer a futuristic concept — it''s here, and it''s changing the way millions of students learn every day. At Học cùng Royce, we''ve integrated AI deeply into the study experience to help you work smarter, not harder.
 
-### AI-Powered Features in Studyield
+### AI-Powered Features in Học cùng Royce
 
 #### 1. Smart Flashcard Generation
-Upload any document, paste text, or even take a photo of your textbook — Studyield''s AI will automatically generate high-quality flashcards. No more spending hours manually creating cards.
+Upload any document, paste text, or even take a photo of your textbook — Học cùng Royce''s AI will automatically generate high-quality flashcards. No more spending hours manually creating cards.
 
 #### 2. AI Chat Assistant
 Have a question about a concept? Our AI chat assistant can explain topics, provide examples, and guide you through complex material. It''s like having a tutor available 24/7.
@@ -114,10 +114,10 @@ As AI technology advances, the possibilities are endless. We''re continuously im
 
 ---
 
-*Experience the future of studying — try Studyield''s AI features today.*',
+*Experience the future of studying — try Học cùng Royce''s AI features today.*',
  'ai-features',
  '["artificial intelligence", "AI study tools", "edtech", "smart learning"]',
- 'Studyield Team',
+ 'Học cùng Royce Team',
  6,
  NOW() - INTERVAL '5 days'),
 
@@ -142,7 +142,7 @@ Cloze deletions (fill-in-the-blank) are incredibly effective for learning:
 - Definitions: "Photosynthesis is the process by which plants convert {{light energy}} into chemical energy"
 - Formulas: "The quadratic formula is x = {{(-b ± √(b²-4ac)) / 2a}}"
 
-Studyield supports cloze cards natively with the `{{...}}` syntax.
+Học cùng Royce supports cloze cards natively with the `{{...}}` syntax.
 
 ### 4. Use Image Occlusion for Visual Content
 
@@ -154,23 +154,23 @@ For vocabulary and paired concepts, create cards that test both directions. Know
 
 ### Putting It All Together
 
-The best part? Studyield supports all of these techniques out of the box. Standard cards, cloze deletions, and image occlusion — all powered by spaced repetition.
+The best part? Học cùng Royce supports all of these techniques out of the box. Standard cards, cloze deletions, and image occlusion — all powered by spaced repetition.
 
 ---
 
-*Create your first set of optimized flashcards on Studyield today.*',
+*Create your first set of optimized flashcards on Học cùng Royce today.*',
  'study-tips',
  '["flashcards", "study techniques", "active recall", "cloze deletion"]',
- 'Studyield Team',
+ 'Học cùng Royce Team',
  5,
  NOW() - INTERVAL '8 days'),
 
 ('live-quiz-classroom',
  'How to Use Live Quizzes to Make Studying Fun',
- 'Turn boring review sessions into exciting competitions with Studyield''s Live Quiz feature. Perfect for classrooms and study groups.',
+ 'Turn boring review sessions into exciting competitions with Học cùng Royce''s Live Quiz feature. Perfect for classrooms and study groups.',
  '## How to Use Live Quizzes to Make Studying Fun
 
-Studying doesn''t have to be a solitary, boring activity. With Studyield''s **Live Quiz** feature, you can turn any study set into a real-time competitive quiz — perfect for classrooms, study groups, or even remote learning sessions.
+Studying doesn''t have to be a solitary, boring activity. With Học cùng Royce''s **Live Quiz** feature, you can turn any study set into a real-time competitive quiz — perfect for classrooms, study groups, or even remote learning sessions.
 
 ### What Is Live Quiz?
 
@@ -200,14 +200,14 @@ Research shows that **gamification** increases engagement and motivation. When l
 
 ### Getting Started
 
-Any study set on Studyield can be turned into a Live Quiz with one click. Try it with your next study group session!
+Any study set on Học cùng Royce can be turned into a Live Quiz with one click. Try it with your next study group session!
 
 ---
 
-*Make studying social — host your first Live Quiz on Studyield.*',
+*Make studying social — host your first Live Quiz on Học cùng Royce.*',
  'features',
  '["live quiz", "gamification", "classroom", "group study"]',
- 'Studyield Team',
+ 'Học cùng Royce Team',
  5,
  NOW() - INTERVAL '12 days'),
 
@@ -221,13 +221,13 @@ Exams can be stressful, but with the right preparation strategy, you can walk in
 ### Phase 1: Planning (4-6 Weeks Before)
 
 **Set up your study materials:**
-- Create a study set for each subject on Studyield
+- Create a study set for each subject on Học cùng Royce
 - Upload lecture notes, textbooks, and past papers
 - Use AI to generate flashcards from your materials
 - Set an exam date on your study set to activate the countdown timer
 
 **Create a study schedule:**
-- Use Studyield''s study schedule feature to plan your review sessions
+- Use Học cùng Royce''s study schedule feature to plan your review sessions
 - Allocate more time to difficult subjects
 - Include regular breaks using the Pomodoro technique
 
@@ -258,36 +258,36 @@ Exams can be stressful, but with the right preparation strategy, you can walk in
 - Read each question carefully before answering
 - Manage your time across all sections
 
-### The Studyield Advantage
+### The Học cùng Royce Advantage
 
-With features like spaced repetition, AI quiz generation, exam clones, and detailed analytics, Studyield gives you everything you need to prepare effectively.
+With features like spaced repetition, AI quiz generation, exam clones, and detailed analytics, Học cùng Royce gives you everything you need to prepare effectively.
 
 ---
 
-*Start your exam prep today — create a study set and set your exam date on Studyield.*',
+*Start your exam prep today — create a study set and set your exam date on Học cùng Royce.*',
  'study-tips',
  '["exam preparation", "study guide", "test taking", "study schedule"]',
- 'Studyield Team',
+ 'Học cùng Royce Team',
  8,
  NOW() - INTERVAL '15 days'),
 
 ('handwriting-ocr-digital-notes',
  'From Handwritten to Digital: How OCR Transforms Your Notes',
- 'Love writing by hand but hate losing your notes? Learn how Studyield''s Handwriting OCR bridges the gap between analog and digital study.',
+ 'Love writing by hand but hate losing your notes? Learn how Học cùng Royce''s Handwriting OCR bridges the gap between analog and digital study.',
  '## From Handwritten to Digital: How OCR Transforms Your Notes
 
 There''s something special about writing by hand. Research from Princeton University shows that students who take handwritten notes **comprehend and remember more** than those who type. But paper notes are hard to search, organize, and review digitally.
 
-That''s where Studyield''s **Handwriting OCR** comes in.
+That''s where Học cùng Royce''s **Handwriting OCR** comes in.
 
 ### What Is Handwriting OCR?
 
-OCR (Optical Character Recognition) is technology that converts images of text into actual, editable digital text. Studyield''s OCR is powered by advanced AI vision models that can read even messy handwriting.
+OCR (Optical Character Recognition) is technology that converts images of text into actual, editable digital text. Học cùng Royce''s OCR is powered by advanced AI vision models that can read even messy handwriting.
 
 ### How to Use It
 
 1. **Take a photo** of your handwritten notes
-2. **Upload it** to Studyield
+2. **Upload it** to Học cùng Royce
 3. **AI processes** the image and extracts the text
 4. **Edit and organize** the digital text in your study set
 5. **Generate flashcards** automatically from the extracted content
@@ -313,16 +313,16 @@ With Handwriting OCR, you get the cognitive benefits of handwriting **and** the 
 
 ---
 
-*Try Studyield''s Handwriting OCR — turn your notebook into a study powerhouse.*',
+*Try Học cùng Royce''s Handwriting OCR — turn your notebook into a study powerhouse.*',
  'features',
  '["handwriting OCR", "digital notes", "note taking", "AI vision"]',
- 'Studyield Team',
+ 'Học cùng Royce Team',
  5,
  NOW() - INTERVAL '18 days'),
 
 ('study-analytics-track-progress',
  'Why Tracking Your Study Progress Changes Everything',
- 'Data-driven studying isn''t just for overachievers. Learn how Studyield''s analytics help you identify weaknesses and study more effectively.',
+ 'Data-driven studying isn''t just for overachievers. Learn how Học cùng Royce''s analytics help you identify weaknesses and study more effectively.',
  '## Why Tracking Your Study Progress Changes Everything
 
 What gets measured gets managed. This applies to studying just as much as it applies to business. Yet most students study blindly, without any data on their actual performance.
@@ -335,7 +335,7 @@ Without tracking, students often:
 - Can''t see their progress, leading to frustration
 - Don''t know their optimal study times
 
-### What Studyield Tracks
+### What Học cùng Royce Tracks
 
 #### Study Streaks
 Stay motivated with daily study streaks. Just like exercise, consistency is key. Our streak system rewards you with XP for studying every day.
@@ -364,16 +364,16 @@ Visualize your consistency with a beautiful calendar view showing your daily stu
 
 ---
 
-*Start tracking your study progress — check your Studyield analytics dashboard today.*',
+*Start tracking your study progress — check your Học cùng Royce analytics dashboard today.*',
  'productivity',
  '["analytics", "study tracking", "productivity", "streaks", "gamification"]',
- 'Studyield Team',
+ 'Học cùng Royce Team',
  6,
  NOW() - INTERVAL '22 days'),
 
 ('teach-back-method',
  'The Teach Back Method: Learn by Teaching an AI',
- 'Teaching is the most effective way to learn. Studyield''s Teach Back mode lets you explain concepts to an AI tutor that asks clarifying questions.',
+ 'Teaching is the most effective way to learn. Học cùng Royce''s Teach Back mode lets you explain concepts to an AI tutor that asks clarifying questions.',
  '## The Teach Back Method: Learn by Teaching an AI
 
 There''s an old saying: **"The best way to learn something is to teach it."** Research backs this up — the **protégé effect** shows that people learn more effectively when they expect to teach the material.
@@ -387,7 +387,7 @@ The Teach Back method involves explaining a concept in your own words, as if you
 - **Strengthen** neural pathways through active processing
 - **Build confidence** in your knowledge
 
-### How Studyield''s Teach Back Works
+### How Học cùng Royce''s Teach Back Works
 
 1. **Choose a topic** from your study set
 2. **Explain the concept** in your own words (text or voice)
@@ -416,19 +416,19 @@ The Teach Back method involves explaining a concept in your own words, as if you
 
 ---
 
-*Try the Teach Back feature on Studyield — your AI student is waiting.*',
+*Try the Teach Back feature on Học cùng Royce — your AI student is waiting.*',
  'study-tips',
  '["teach back", "active learning", "study method", "AI tutor"]',
- 'Studyield Team',
+ 'Học cùng Royce Team',
  6,
  NOW() - INTERVAL '25 days'),
 
 ('deep-research-essays',
  'How to Write Better Essays with AI-Powered Deep Research',
- 'Stop spending hours on manual research. Studyield''s Deep Research generates comprehensive reports with sources, outlines, and key insights.',
+ 'Stop spending hours on manual research. Học cùng Royce''s Deep Research generates comprehensive reports with sources, outlines, and key insights.',
  '## How to Write Better Essays with AI-Powered Deep Research
 
-Writing a research paper or essay can be overwhelming. Finding reliable sources, organizing information, and synthesizing arguments takes hours — sometimes days. Studyield''s **Deep Research** feature cuts that time dramatically.
+Writing a research paper or essay can be overwhelming. Finding reliable sources, organizing information, and synthesizing arguments takes hours — sometimes days. Học cùng Royce''s **Deep Research** feature cuts that time dramatically.
 
 ### What Is Deep Research?
 
@@ -469,19 +469,19 @@ Always write your essays in your own words and properly cite all sources.
 
 ---
 
-*Try Deep Research on Studyield — your personal research assistant.*',
+*Try Deep Research on Học cùng Royce — your personal research assistant.*',
  'ai-features',
  '["deep research", "essay writing", "AI research", "academic writing"]',
- 'Studyield Team',
+ 'Học cùng Royce Team',
  6,
  NOW() - INTERVAL '30 days'),
 
-('getting-started-studyield',
- 'Getting Started with Studyield: A Complete Beginner''s Guide',
- 'New to Studyield? This complete guide walks you through creating your account, setting up your first study set, and making the most of every feature.',
- '## Getting Started with Studyield: A Complete Beginner''s Guide
+('getting-started-royce',
+ 'Getting Started with Học cùng Royce: A Complete Beginner''s Guide',
+ 'New to Học cùng Royce? This complete guide walks you through creating your account, setting up your first study set, and making the most of every feature.',
+ '## Getting Started with Học cùng Royce: A Complete Beginner''s Guide
 
-Welcome to Studyield! Whether you''re a high school student, university learner, or lifelong educator, this guide will help you get up and running in minutes.
+Welcome to Học cùng Royce! Whether you''re a high school student, university learner, or lifelong educator, this guide will help you get up and running in minutes.
 
 ### Step 1: Create Your Account
 
@@ -529,7 +529,7 @@ As you progress, explore advanced features:
 ### Tips for Success
 
 1. **Study a little every day** — consistency beats cramming
-2. **Trust the algorithm** — review cards when Studyield tells you to
+2. **Trust the algorithm** — review cards when Học cùng Royce tells you to
 3. **Use multiple card types** — mix standard, cloze, and image occlusion
 4. **Track your streaks** — the XP system keeps you motivated
 5. **Join study groups** — use Live Quiz for collaborative review
@@ -539,7 +539,7 @@ As you progress, explore advanced features:
 *Welcome aboard! Your journey to smarter studying starts now.*',
  'getting-started',
  '["beginner guide", "tutorial", "onboarding", "study sets"]',
- 'Studyield Team',
+ 'Học cùng Royce Team',
  8,
  NOW() - INTERVAL '35 days')
 
