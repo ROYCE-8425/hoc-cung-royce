@@ -17,7 +17,7 @@ import { Response } from 'express';
 import { ApiTags, ApiOperation, ApiResponse, ApiBearerAuth } from '@nestjs/swagger';
 import { AiService } from './ai.service';
 import { JwtAuthGuard } from '../../common/guards/jwt-auth.guard';
-import { CurrentUser, JwtPayload } from '../../common';
+import { CurrentUser, JwtPayload, Public } from '../../common';
 
 interface GenerateFlashcardsDto {
   content: string;
@@ -475,6 +475,7 @@ Output format: Return a JSON object with a "questions" array containing objects 
     }
   }
 
+  @Public()
   @Get('tts')
   @ApiOperation({ summary: 'Generate speech from text using high-quality neural voices' })
   @ApiResponse({ status: 200, description: 'Audio file stream returned successfully' })
@@ -488,21 +489,7 @@ Output format: Return a JSON object with a "questions" array containing objects 
     }
 
     const selectedVoice = voice || 'en-US-AriaNeural';
-
-    try {
-      const buffer = await this.aiService.generateTts(text, selectedVoice);
-      res.set({
-        'Content-Type': 'audio/mpeg',
-        'Content-Length': buffer.length,
-        'Cache-Control': 'public, max-age=86400',
-      });
-      res.send(buffer);
-    } catch (error) {
-      this.logger.error(`Failed to generate TTS: ${error.message}`);
-      res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
-        message: 'Failed to generate speech. Please try again later.',
-      });
-    }
+    await this.aiService.streamTts(text, selectedVoice, res);
   }
 }
 

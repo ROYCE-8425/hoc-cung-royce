@@ -484,5 +484,31 @@ export class AiService implements OnModuleInit {
       throw new BadRequestException(`TTS generation failed: ${error.message}`);
     }
   }
+
+  async streamTts(text: string, voice: string, res: any): Promise<void> {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { Communicate } = require('@travisvn/edge-tts');
+      const communicate = new Communicate(text, { voice });
+      
+      res.setHeader('Content-Type', 'audio/mpeg');
+      res.setHeader('Transfer-Encoding', 'chunked');
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+
+      for await (const chunk of communicate.stream()) {
+        if (chunk.type === 'audio' && chunk.data) {
+          res.write(chunk.data);
+        }
+      }
+      res.end();
+    } catch (error) {
+      this.logger.error(`TTS streaming failed for text "${text}" with voice "${voice}": ${error.message}`);
+      if (!res.headersSent) {
+        res.status(500).json({
+          message: 'Failed to stream speech. Please try again later.',
+        });
+      }
+    }
+  }
 }
 

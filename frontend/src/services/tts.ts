@@ -1,5 +1,3 @@
-import api from './api';
-
 // Supported premium AI voices (Edge Neural voices)
 export interface PremiumVoice {
   id: string;
@@ -57,17 +55,13 @@ export const speakTextWithAI = async (
     return null;
   }
 
-  // Handle premium AI voice using backend
+  // Handle premium AI voice using direct browser audio streaming from the public backend endpoint
   try {
     stopSpeech();
 
-    const response = await api.get('/ai/tts', {
-      params: { text, voice: voiceId },
-      responseType: 'blob',
-    });
-
-    const blob = new Blob([response.data], { type: 'audio/mpeg' });
-    const audioUrl = URL.createObjectURL(blob);
+    // Use VITE_API_URL if defined, otherwise derive from current location
+    const baseApiUrl = import.meta.env.VITE_API_URL || (typeof window !== 'undefined' ? `${window.location.origin}/api/v1` : 'https://api.trannhuy.online/api/v1');
+    const audioUrl = `${baseApiUrl}/ai/tts?text=${encodeURIComponent(text)}&voice=${voiceId}`;
     
     const audio = new Audio(audioUrl);
     audio.playbackRate = rate;
@@ -79,7 +73,7 @@ export const speakTextWithAI = async (
     await audio.play();
     return audio;
   } catch (error) {
-    console.error('Failed to generate/play premium TTS, falling back to browser voice:', error);
+    console.error('Failed to stream premium TTS, falling back to browser voice:', error);
     // Fallback to browser default
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       window.speechSynthesis.cancel();
