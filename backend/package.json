@@ -37,7 +37,7 @@
     "@nestjs/platform-socket.io": "^10.3.0",
     "@nestjs/swagger": "^7.1.17",
     "@nestjs/throttler": "^5.1.1",
-    "@nestjs/websockets": "^10.3.0",
+    "@nestjs/websockets": "^11.1.28",
     "@qdrant/js-client-rest": "^1.7.0",
     "@travisvn/edge-tts": "^1.0.2",
     "bcrypt": "^5.1.1",
