@@ -9,6 +9,7 @@ import { Spinner } from '@/components/ui/spinner';
 import { useNotesStore } from '@/stores/useNotesStore';
 import { DeleteConfirmModal } from '@/components/DeleteConfirmModal';
 import { cn } from '@/lib/utils';
+import { speakTextWithAI, stopSpeech, getCurrentAudio } from '@/services/tts';
 import {
   ArrowLeft,
   Edit,
@@ -90,7 +91,6 @@ export function NoteDetailPage() {
   const [ttsSpeed, setTTSSpeed] = useState(1);
   const [showTTSPlayer, setShowTTSPlayer] = useState(false);
   const [ttsProgress, setTTSProgress] = useState(0);
-  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
   const progressIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
@@ -121,48 +121,45 @@ export function NoteDetailPage() {
       .trim();
   }, [currentNote]);
 
-  const handleTTSPlay = useCallback(() => {
+  const handleTTSPlay = useCallback(async () => {
     if (!currentNote) return;
+
+    const preferredVoice = localStorage.getItem('studySession.selectedVoiceURI') || 'en-US-AriaNeural';
 
     // If paused, resume
     if (isTTSPaused) {
-      speechSynthesis.resume();
+      const audio = getCurrentAudio();
+      if (audio) {
+        audio.play();
+      } else {
+        speechSynthesis.resume();
+      }
       setIsTTSPaused(false);
       setIsTTSPlaying(true);
+      
+      if (!audio) {
+        const text = getCleanText();
+        const duration = (text.length / (150 * ttsSpeed)) * 60 * 1000;
+        let elapsed = (ttsProgress / 100) * duration;
+        progressIntervalRef.current = setInterval(() => {
+          elapsed += 100;
+          const progress = Math.min((elapsed / duration) * 100, 99);
+          setTTSProgress(progress);
+        }, 100);
+      }
       return;
     }
 
     // Stop any existing speech
-    speechSynthesis.cancel();
+    stopSpeech();
 
     const text = getCleanText();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = ttsSpeed;
-    utterance.pitch = 1;
+    setIsTTSPlaying(true);
+    setIsTTSPaused(false);
+    setShowTTSPlayer(true);
+    setTTSProgress(0);
 
-    // Get a good voice
-    const voices = speechSynthesis.getVoices();
-    const englishVoice = voices.find(v => v.lang.startsWith('en') && v.name.includes('Google'))
-      || voices.find(v => v.lang.startsWith('en'));
-    if (englishVoice) utterance.voice = englishVoice;
-
-    utterance.onstart = () => {
-      setIsTTSPlaying(true);
-      setIsTTSPaused(false);
-      setShowTTSPlayer(true);
-      setTTSProgress(0);
-
-      // Estimate progress (rough approximation)
-      const duration = text.length / (150 * ttsSpeed) * 60 * 1000; // ~150 words/min
-      let elapsed = 0;
-      progressIntervalRef.current = setInterval(() => {
-        elapsed += 100;
-        const progress = Math.min((elapsed / duration) * 100, 99);
-        setTTSProgress(progress);
-      }, 100);
-    };
-
-    utterance.onend = () => {
+    const onEnd = () => {
       setIsTTSPlaying(false);
       setIsTTSPaused(false);
       setTTSProgress(100);
@@ -172,20 +169,34 @@ export function NoteDetailPage() {
       setTimeout(() => setTTSProgress(0), 1000);
     };
 
-    utterance.onerror = () => {
-      setIsTTSPlaying(false);
-      setIsTTSPaused(false);
-      if (progressIntervalRef.current) {
-        clearInterval(progressIntervalRef.current);
-      }
-    };
-
-    utteranceRef.current = utterance;
-    speechSynthesis.speak(utterance);
-  }, [currentNote, isTTSPaused, ttsSpeed, getCleanText]);
+    const audio = await speakTextWithAI(text, preferredVoice, ttsSpeed, onEnd);
+    
+    if (audio) {
+      const handleTimeUpdate = () => {
+        if (audio.duration) {
+          const progress = (audio.currentTime / audio.duration) * 100;
+          setTTSProgress(progress);
+        }
+      };
+      audio.addEventListener('timeupdate', handleTimeUpdate);
+    } else {
+      const duration = (text.length / (150 * ttsSpeed)) * 60 * 1000;
+      let elapsed = 0;
+      progressIntervalRef.current = setInterval(() => {
+        elapsed += 100;
+        const progress = Math.min((elapsed / duration) * 100, 99);
+        setTTSProgress(progress);
+      }, 100);
+    }
+  }, [currentNote, isTTSPaused, ttsSpeed, ttsProgress, getCleanText]);
 
   const handleTTSPause = useCallback(() => {
-    speechSynthesis.pause();
+    const audio = getCurrentAudio();
+    if (audio) {
+      audio.pause();
+    } else {
+      speechSynthesis.pause();
+    }
     setIsTTSPaused(true);
     setIsTTSPlaying(false);
     if (progressIntervalRef.current) {
@@ -194,7 +205,7 @@ export function NoteDetailPage() {
   }, []);
 
   const handleTTSStop = useCallback(() => {
-    speechSynthesis.cancel();
+    stopSpeech();
     setIsTTSPlaying(false);
     setIsTTSPaused(false);
     setTTSProgress(0);
@@ -205,25 +216,13 @@ export function NoteDetailPage() {
 
   const handleTTSSpeedChange = useCallback((speed: number) => {
     setTTSSpeed(speed);
-    // If currently playing, restart with new speed
     if (isTTSPlaying || isTTSPaused) {
       handleTTSStop();
       setTimeout(() => {
-        const text = getCleanText();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = speed;
-        utteranceRef.current = utterance;
-
-        utterance.onstart = () => setIsTTSPlaying(true);
-        utterance.onend = () => {
-          setIsTTSPlaying(false);
-          setTTSProgress(100);
-        };
-
-        speechSynthesis.speak(utterance);
+        handleTTSPlay();
       }, 100);
     }
-  }, [isTTSPlaying, isTTSPaused, handleTTSStop, getCleanText]);
+  }, [isTTSPlaying, isTTSPaused, handleTTSStop, handleTTSPlay]);
 
   const closeTTSPlayer = useCallback(() => {
     handleTTSStop();
@@ -233,7 +232,7 @@ export function NoteDetailPage() {
   // Cleanup on unmount
   useEffect(() => {
     return () => {
-      speechSynthesis.cancel();
+      stopSpeech();
       if (progressIntervalRef.current) {
         clearInterval(progressIntervalRef.current);
       }

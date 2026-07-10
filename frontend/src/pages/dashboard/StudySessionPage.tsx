@@ -8,6 +8,7 @@ import { DashboardLayout } from '@/layouts/DashboardLayout';
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 import { ClozeRenderer } from '@/components/ClozeRenderer';
+import { speakTextWithAI, PREMIUM_VOICES, stopSpeech } from '@/services/tts';
 import { ImageOcclusionViewer } from '@/components/ImageOcclusionViewer';
 import { cn } from '@/lib/utils';
 import type { OcclusionRegion } from '@/types';
@@ -272,44 +273,47 @@ export function StudySessionPage() {
 
   // ── Load browser voices ──
   useEffect(() => {
-    if (!isSpeechSupported()) return;
-
     const loadVoices = () => {
-      const voices = window.speechSynthesis.getVoices();
-      const enVoices = voices.filter((v) => v.lang.startsWith('en'));
-      setAvailableVoices(enVoices.length > 0 ? enVoices : voices);
-      const selectedStillExists = voices.some((v) => v.voiceURI === selectedVoiceURI);
+      const isPremium = PREMIUM_VOICES.some((v) => v.id === selectedVoiceURI);
+      
+      let voices: SpeechSynthesisVoice[] = [];
+      let enVoices: SpeechSynthesisVoice[] = [];
+      
+      if (isSpeechSupported()) {
+        voices = window.speechSynthesis.getVoices();
+        enVoices = voices.filter((v) => v.lang.startsWith('en'));
+        setAvailableVoices(enVoices.length > 0 ? enVoices : voices);
+      }
 
-      if ((!selectedVoiceURI || !selectedStillExists) && enVoices.length > 0) {
-        const preferred = enVoices.find((v) => v.name.includes('Google US')) || enVoices[0];
-        setSelectedVoiceURI(preferred.voiceURI);
-        setStoredValue(studySettingsStorage.selectedVoiceURI, preferred.voiceURI);
+      const selectedStillExists = isPremium || voices.some((v) => v.voiceURI === selectedVoiceURI);
+
+      if (!selectedVoiceURI || !selectedStillExists) {
+        // Default to a premium AI voice: en-US-AriaNeural
+        const preferred = 'en-US-AriaNeural';
+        setSelectedVoiceURI(preferred);
+        setStoredValue(studySettingsStorage.selectedVoiceURI, preferred);
       }
     };
 
     loadVoices();
-    window.speechSynthesis.onvoiceschanged = loadVoices;
+    if (isSpeechSupported()) {
+      window.speechSynthesis.onvoiceschanged = loadVoices;
+    }
     return () => {
-      window.speechSynthesis.onvoiceschanged = null;
+      if (isSpeechSupported()) {
+        window.speechSynthesis.onvoiceschanged = null;
+      }
     };
   }, [selectedVoiceURI]);
 
   // ── Speak helper ──
   const speakText = useCallback(
     (text: string) => {
-      if (!isSpeechSupported()) return;
       const cleanText = cleanSpeechText(text);
       if (!cleanText) return;
-
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(cleanText);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.9;
-      const voice = availableVoices.find((v) => v.voiceURI === selectedVoiceURI);
-      if (voice) utterance.voice = voice;
-      window.speechSynthesis.speak(utterance);
+      speakTextWithAI(cleanText, selectedVoiceURI, 0.9);
     },
-    [availableVoices, selectedVoiceURI]
+    [selectedVoiceURI]
   );
 
   useEffect(() => {
@@ -320,7 +324,7 @@ export function StudySessionPage() {
     }
 
     return () => {
-      if (isSpeechSupported()) window.speechSynthesis.cancel();
+      stopSpeech();
       resetSession();
     };
   }, [studySetId, fetchFlashcards, resetSession]);
@@ -592,12 +596,22 @@ export function StudySessionPage() {
                     onChange={(e) => handleVoiceChange(e.target.value)}
                     className="w-full p-2 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
                   >
-                    <option value="">{t('studySession.defaultVoice', 'Default browser voice')}</option>
-                    {availableVoices.map((v) => (
-                      <option key={v.voiceURI} value={v.voiceURI}>
-                        {v.name} ({v.lang})
-                      </option>
-                    ))}
+                    <optgroup label="✨ Premium AI Voices (Highly Emotional)">
+                      {PREMIUM_VOICES.map((v) => (
+                        <option key={v.id} value={v.id}>
+                          {v.name}
+                        </option>
+                      ))}
+                    </optgroup>
+                    {availableVoices.length > 0 && (
+                      <optgroup label="💻 Standard Browser Voices">
+                        {availableVoices.map((v) => (
+                          <option key={v.voiceURI} value={v.voiceURI}>
+                            {v.name} ({v.lang})
+                          </option>
+                        ))}
+                      </optgroup>
+                    )}
                   </select>
                   <button
                     onClick={() => speakText('Hello, how are you today?')}

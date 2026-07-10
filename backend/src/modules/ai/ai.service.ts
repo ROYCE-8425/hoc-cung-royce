@@ -470,4 +470,19 @@ export class AiService implements OnModuleInit {
 
     this.logger.log(`Mind map deleted: ${id}`);
   }
+
+  async generateTts(text: string, voice: string = 'en-US-AriaNeural'): Promise<Buffer> {
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      const { EdgeTTS } = require('@travisvn/edge-tts');
+      const tts = new EdgeTTS(text, voice);
+      const result = await tts.synthesize();
+      const arrayBuffer = await result.audio.arrayBuffer();
+      return Buffer.from(arrayBuffer);
+    } catch (error) {
+      this.logger.error(`TTS generation failed for text "${text}" with voice "${voice}": ${error.message}`);
+      throw new BadRequestException(`TTS generation failed: ${error.message}`);
+    }
+  }
 }
+
