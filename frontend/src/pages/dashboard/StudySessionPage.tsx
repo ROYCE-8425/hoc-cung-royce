@@ -750,12 +750,22 @@ export function StudySessionPage() {
                   disabled={!isSpeechSupported()}
                   aria-label="Pronunciation voice"
                 >
-                  <option value="">Default browser voice</option>
-                  {availableVoices.map((voice) => (
-                    <option key={voice.voiceURI} value={voice.voiceURI}>
-                      {voice.name} ({voice.lang})
-                    </option>
-                  ))}
+                  <optgroup label="✨ Premium AI Voices (Highly Emotional)">
+                    {PREMIUM_VOICES.map((v) => (
+                      <option key={v.id} value={v.id}>
+                        {v.name}
+                      </option>
+                    ))}
+                  </optgroup>
+                  {availableVoices.length > 0 && (
+                    <optgroup label="💻 Standard Browser Voices">
+                      {availableVoices.map((v) => (
+                        <option key={v.voiceURI} value={v.voiceURI}>
+                          {v.name} ({v.lang})
+                        </option>
+                      ))}
+                    </optgroup>
+                  )}
                 </select>
               </div>
             </div>
