@@ -11,6 +11,7 @@ import { InteractiveGraph } from '@/components/problem-solver/InteractiveGraph';
 import { motion, AnimatePresence } from 'framer-motion';
 import 'katex/dist/katex.min.css';
 import { InlineMath, BlockMath } from 'react-katex';
+import { speakTextWithAI, stopSpeech } from '@/services/tts';
 import {
   ListOrdered,
   Code2,
@@ -323,6 +324,13 @@ export function SolutionPage() {
     }
   }, [activeTab, loadAlternativeMethods]);
 
+  // Stop speech on unmount
+  useEffect(() => {
+    return () => {
+      stopSpeech();
+    };
+  }, []);
+
   const toggleBookmark = async () => {
     if (!id) return;
     setBookmarkLoading(true);
@@ -356,25 +364,24 @@ export function SolutionPage() {
   const loadNarration = async () => {
     if (!id) return;
     if (isSpeaking) {
-      window.speechSynthesis.cancel();
+      stopSpeech();
       setIsSpeaking(false);
       return;
     }
+
+    const preferredVoice = localStorage.getItem('studySession.selectedVoiceURI') || 'en-US-AriaNeural';
+
     if (narrationText) {
-      const utterance = new SpeechSynthesisUtterance(narrationText);
-      utterance.onend = () => setIsSpeaking(false);
-      window.speechSynthesis.speak(utterance);
       setIsSpeaking(true);
+      speakTextWithAI(narrationText, preferredVoice, 0.9, () => setIsSpeaking(false));
       return;
     }
     setNarrationLoading(true);
     try {
       const res = await problemSolverService.getNarration(id);
       setNarrationText(res.narration);
-      const utterance = new SpeechSynthesisUtterance(res.narration);
-      utterance.onend = () => setIsSpeaking(false);
-      window.speechSynthesis.speak(utterance);
       setIsSpeaking(true);
+      speakTextWithAI(res.narration, preferredVoice, 0.9, () => setIsSpeaking(false));
     } catch (err) {
       console.error('Failed to load narration:', err);
     }
